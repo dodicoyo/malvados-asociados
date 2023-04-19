@@ -1,0 +1,43 @@
+@use 'variables' as v;
+// esto es los media query para ser responsivo
+@mixin telefono{
+    @media (min-width: v.$telefono){
+        @content;// esta linea de codigo dice que se puede reutilizar e insertar codigo de donde lo lla
+    }
+     
+}
+@mixin tablet{
+    @media (min-width: v.$tablet){
+        @content;
+    }
+     
+}
+
+@mixin desktop{
+    @media (min-width: v.$desktop){
+        @content;
+    }
+     
+}
+@mixin desktopXL{
+    @media (min-width: v.$desktopXL){
+        @content;
+    }
+     
+}
+
+// columnas pre echas
+@mixin grid($a,$w){
+    display: grid;
+    grid-template-columns: repeat($a ,$w+fr);
+    column-gap: 5rem; 
+  
+
+}
+// esta parte se encarga delas fechas 
+// resetear la lista
+@mixin resetear-lista(){
+    margin:0;
+    padding: 0;
+    list-style: none;
+}

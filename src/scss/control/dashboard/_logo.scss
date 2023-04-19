@@ -1,0 +1,14 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.logo{
+    img{
+        margin-top: 2rem;
+        max-width: 35%;
+    }
+   
+    flex-direction: column;
+   
+    justify-content: center;
+    padding: 1rem;
+}

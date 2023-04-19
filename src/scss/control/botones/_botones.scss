@@ -1,0 +1,72 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+/*------ boton dela barra-------*/
+.barra a{
+    background-color: v.$color1;
+    border-radius: 5rem;
+    &:hover{
+        background-color: v.$blanco;
+        color: v.$color1;
+    }
+  
+}
+a{
+        color: v.$blanco;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        height: 4rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition-property: background-color;
+        transition-duration: 300ms;
+        padding: 1rem;
+      
+      
+
+}
+
+/*------ fin botono dela barra-------*/
+
+/*------ botonoes desde fechas-llenas-------*/
+
+.botton {
+    margin-top: 0rem;
+    background-color: v.$color1;
+    border-radius: 5rem;
+    text-align: center;
+  
+    &:hover a{
+        background-color: v.$blanco;
+        color: v.$color1;
+      }
+      
+   
+   
+}
+
+@include m.tablet{
+    .botton{
+        max-width: 40rem;
+        width: 20rem;
+
+    }
+  
+}
+@include m.desktop{
+    .botton{
+        max-width: 40rem;
+        width: 30rem;
+
+    }
+  
+}
+/*------ fin de fechas-llenas-------*/
+.listar a{
+    color:v.$blanco;
+}
+.tlis a{
+    color:v.$color1;
+    display: inline;
+}

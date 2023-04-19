@@ -1,0 +1,52 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+table{
+    border-collapse: collapse;
+    background: v.$color6;
+}
+table thead{
+    color:v.$rojoRosado;
+
+}
+td,th{
+    padding:5px 10px;
+    border: 1px solid v.$color1;
+}
+
+@media(max-width:30em)
+{
+    table{
+        width: 100%;
+        font-size: .9rem;
+    }
+    table tr{
+        display: flex;
+        flex-direction: column;
+        border: 1px solid v.$color1;
+        padding:1em;
+        margin-bottom: 1em;
+    }
+    table td[data-titulo]{
+        display: flex;
+    }
+    table td,
+    table th{
+        border:none;
+    }
+    table td[data-titulo]::before{
+        content: attr(data-titulo);
+        width:80px;
+        color:v.$rojoRosado;
+        font-weight: bold;
+    }
+    table thead{
+        display: none;
+
+    }
+}
+@include m.desktop{
+    table{
+        display: table;
+        width: 90%;
+    }
+}

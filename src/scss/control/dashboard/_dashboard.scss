@@ -1,0 +1,20 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+.dashboard{
+    background-color: v.$blanco;
+    @include m.tablet{
+        display: flex;
+        height: 100vh;/*------ esto quiere decir todo el espacio dela pantalla-------*/
+
+    }
+    .principal{
+        flex: 1;//esto ase forsar que toe todo el espacio que enga disponible
+    }
+    .contenido{
+        
+        .nombre-pagina{
+            font-size: 2.8rem;
+            text-align: center;
+        }
+    }
+}
