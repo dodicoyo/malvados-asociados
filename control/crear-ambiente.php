@@ -8,33 +8,35 @@
                 <div class="contenedor-campos ">
 
                     <div class="campo">
+                        
+                        <input class="input-text" type="text"  name="nombre" id="nombre" required="">
                         <label>Nombre</label>
-                        <input class="input-text" type="text"  name="nombre" id="nombre" placeholder="nombre">
-
                     </div>
 
                     <div class="campo">
+                        <input class="input-text" type="text" name="descripcion" id="descripcion"  required="">
                         <label>Descripción</label>
-                        <input class="input-text" type="text" name="descripcion" id="descripcion"  placeholder="descripción">
-
                     </div>
                     <div class="campo">
+                        
+                        <input class="input-text" type="text" name="capacidad" id="capacidad"  required="">
                         <label>Capacidad</label>
-                        <input class="input-text" type="text" name="capacidad" id="capacidad"  placeholder="capacidad">
-
                     </div>
                     <div class="campo">
+                        
+                        <input class="input-text" type="text" name="ubicacion" id="ubicacion"  required="">
                         <label>Ubicación</label>
-                        <input class="input-text" type="text" name="ubicacion" id="ubicacion"  placeholder="ubicación">
-
                     </div>
                     <div class="campo">
+                        
+                        <input class="input-text" type="text" name="tipo" id="tipo"  required="">
                         <label>Tipo</label>
-                        <input class="input-text" type="text" name="tipo" id="tipo"  placeholder="tipo">
                     </div>
                     <div class="campo">
-                        <label>Equipamiento</label>                        
-                        <select name="equi[]" class="form-select multiple-select" multiple >
+                         <label>Equipamiento</label><br/><br/>
+                    </div>
+                    <div class="campo">
+                        <select name="equi[]" required="" class="form-select multiple-select" multiple >
                             <?php
                                 include("../app/conexion.php");
                                 $sql="select *from infraestructura";
@@ -51,6 +53,7 @@
                                 }
                             ?>
                         </select>
+                       
                     </div>
                     <div class="botton-enviar">
                     <input  class="botton " type="submit" value="Guardar">

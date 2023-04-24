@@ -55,26 +55,30 @@
             <fieldset>
                 <div class="contenedor-campos ">
                 <div class="campo">
+                        
+                        <input class="input-text" type="text"  name="nombre" id="nombre" required="" value="<?php echo $nombre;?>">
                         <label >Nombre</label>
-                        <input class="input-text" type="text"  name="nombre" id="nombre" value="<?php echo $nombre;?>">
 
                     </div>
                     <div class="campo">
+                       
+                        <input class="input-text" type="text"  name="tipo" id="tipo" required="" value="<?php echo $tipo;?>">
                         <label >Tipo</label>
-                        <input class="input-text" type="text"  name="tipo" id="tipo" value="<?php echo $tipo;?>">
 
                     </div>
                     <div class="campo">
+                        
+                        <input class="input-text" type="text" name="estado" id="estado" required="" value="<?php echo $estado;?>" >
                         <label >Estado</label>
-                        <input class="input-text" type="text" name="estado" id="estado" value="<?php echo $estado;?>" >
                         
                     </div>
                     <div class="campo">
+                        
+                        <input class="input-text" type="text"  name="descripcion" id="descripcion" required="" value="<?php echo $descripcion;?>">
                         <label >Descripcion</label>
-                        <input class="input-text" type="text"  name="descripcion" id="descripcion" value="<?php echo $descripcion;?>">
 
                     </div>
-                    <input type="hidden" name="id_infraestructura" value="<?php echo $id;?>">
+                    <input type="hidden" name="id_infraestructura" required="" value="<?php echo $id;?>">
                 </div>
                 <div class="botton-enviar">
                     <input  class="botton " type="submit" value="Actualizar" name="enviar">

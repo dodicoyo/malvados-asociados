@@ -77,32 +77,39 @@
             <fieldset>
                 <div class="contenedor-campos ">
                 <div class="campo">
+                        
+                        <input class="input-text" type="text"  name="nombre" id="nombre" required="" value="<?php echo $nombre;?>">
                         <label >Nombre</label>
-                        <input class="input-text" type="text"  name="nombre" id="nombre" value="<?php echo $nombre;?>">
 
                     </div>
                     <div class="campo">
+                        
+                        <input class="input-text" type="text"  name="descripcion" id="descripcion" required="" value="<?php echo $descripcion;?>">
                         <label >Descripcion</label>
-                        <input class="input-text" type="text"  name="descripcion" id="descripcion" value="<?php echo $descripcion;?>">
 
                     </div>
                     <div class="campo">
+                        
+                        <input class="input-text" type="text" name="capacidad" id="capacidad" required=""  value="<?php echo $capacidad;?>" >
                         <label >Capacidad</label>
-                        <input class="input-text" type="text" name="capacidad" id="capacidad" value="<?php echo $capacidad;?>" >
                         
                     </div>
                     <div class="campo">
+                        
+                        <input class="input-text" type="text"  name="ubicacion" id="ubicacion" required="" value="<?php echo $ubicacion;?>">
                         <label >ubicacion</label>
-                        <input class="input-text" type="text"  name="ubicacion" id="ubicacion" value="<?php echo $ubicacion;?>">
 
                     </div>
                     <div class="campo">
+                        
+                        <input class="input-text" type="text"  name="tipo" id="tipo" required=""  value="<?php echo $tipo;?>">
                         <label >Tipo</label>
-                        <input class="input-text" type="text"  name="tipo" id="tipo" value="<?php echo $tipo;?>">
 
                     </div>
                     <div class="campo">
-                        <label >Equipamiento</label>
+                        <label >Equipamiento</label><br/><br/>
+    </div>
+    <div class="campo">
                         <?PHP
                         include("../app/conexion.php");
                            if(isset($_GET['id_ambiente']))
@@ -116,7 +123,7 @@
                               }
                            } 
                         ?>
-                        <select name="equi[]" class="form-select multiple-select" multiple >
+                        <select name="equi[]" class="form-select multiple-select" required="" multiple >
                             <?php
                                 include("../app/conexion.php");
                                 

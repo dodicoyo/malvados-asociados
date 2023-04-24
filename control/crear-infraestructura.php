@@ -8,21 +8,25 @@
 
                 <div class="contenedor-campos ">
                     <div class="campo">
-                        <input class="input-text" type="text"  name="nombre" id="nombre" placeholder="Nombre">
+                        <input class="input-text" type="text"  name="nombre" id="nombre"  required="">
+                        <label for="">nombre</label>
 
                     </div>
 
                     <div class="campo">
-                        <input class="input-text" type="text"  name="tipo" id="tipo" placeholder="Tipo - Infraestructura">
+                        <input class="input-text" type="text"  name="tipo" id="tipo" required="" >
+                        <label for="">Tipo Infraestructura</label>
 
                     </div>
 
                     <div class="campo">
-                        <input class="input-text" type="text" name="estado" id="estado"  placeholder="Estado">
+                        <input class="input-text" type="text" name="estado" id="estado"  required="">
+                        <label for="">Estado</label>
 
                     </div>
                     <div class="campo">
-                        <input class="input-text" type="text" name="descripcion" id="descripcion"  placeholder="Descripcion">
+                        <input class="input-text" type="text" name="descripcion" id="descripcion"  required="">
+                        <label for="">Descripción</label>
 
                     </div>
 
