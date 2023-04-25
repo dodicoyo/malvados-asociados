@@ -10,7 +10,7 @@
             $estado = $_POST['estado'];
             $descripcion = $_POST['descripcion'];
             $sql="update infraestructura set nombre='$nombre',tipo='$tipo', estado='$estado',descripcion='$descripcion' where id_infraestructura='$id'";
-            echo $sql;
+           // echo $sql;
             $resultado=mysqli_query($conectar,$sql);
             if($resultado){
                 echo " <script languaje='JavaScript'>

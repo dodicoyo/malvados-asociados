@@ -1,4 +1,17 @@
+<?php 
+session_start();
+error_reporting(0);
+$varsesion= $_SESSION['usuario'];
+$id= $_SESSION['id'];
 
+//echo "$id";
+
+if($varsesion==null || $varsesion=''){//si varsesion esta nulo o vacio no puede ingresar y destruye la sesion
+    header("location:../login/usuario_login.php");
+    die();
+
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,6 +56,17 @@
     </aside>
     <div class="principal">
         <div class="barra flex">
-            <p>Hola: <span>Control</span></p>
-            <a href="" class="cerrar-sesion">Cerrar Sesion</a>
+            
+            <p>Hola: <span>
+                <?php //echo''.$_SESSION['id'];
+                $id=$_SESSION['id'];
+                include("../app/conexion.php");
+                $sql="select nombre, apPaterno, apMaterno from usuario where id_usuario='$id'";
+                $resultado=mysqli_query($conectar,$sql);
+                $filas=mysqli_fetch_assoc($resultado);
+                 echo $filas['nombre'].' '.$filas['apPaterno'].' '.$filas['apMaterno'];
+                    
+                ?>
+                </span></p>
+            <a href="cerrar_session.php" class="cerrar-sesion">Cerrar Sesion</a>
         </div>
