@@ -49,7 +49,7 @@ if($varsesion==null || $varsesion=''){//si varsesion esta nulo o vacio no puede 
         <nav class="sidebar-nav flex">
             <a href="infraestructura.php">Infraestructura Fisica</a>
             <a href="ambiente.php">Ambiente</a>
-            <a href="crear-infraestructura.php">Reserva</a>
+            <a href="reserva.php">Reserva</a>
                 <a href="crear-ambiente.php">Certificado</a>
                 <a href="tipoevento.php">Tipos de Eventos</a>
         </nav>
@@ -68,5 +68,5 @@ if($varsesion==null || $varsesion=''){//si varsesion esta nulo o vacio no puede 
                     
                 ?>
                 </span></p>
-            <a href="cerrar_session.php" class="cerrar-sesion">Cerrar Sesion</a>
+            <a href="../login/cerrar_session.php" class="cerrar-sesion">Cerrar Sesion</a>
         </div>
