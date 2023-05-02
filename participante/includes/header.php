@@ -95,8 +95,8 @@ if($varsesion==null || $varsesion=''){//si varsesion esta nulo o vacio no puede 
                 <li class="nav-item">
                     <a class="nav-link page-scroll" href="preguntas.php">Preguntas Frecuentes</a>
                 </li>
-                <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#your-link"><i class='fa fa-user'></i>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle page-scroll" href="#about" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class='fa fa-user'></i>
                          <?php //echo''.$_SESSION['id'];
                 $id=$_SESSION['id'];
                 include("../app/conexion.php");
@@ -106,6 +106,11 @@ if($varsesion==null || $varsesion=''){//si varsesion esta nulo o vacio no puede 
                  echo $filas['nombre'].' '.$filas['apPaterno'].' '.$filas['apMaterno'];
                     
                 ?></a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="reserva.php"><span class="item-text">RESERVAS</span></a>
+                        <div class="dropdown-items-divide-hr"></div>
+                        <a class="dropdown-item" href="editperfil.php"><span class="item-text">EDITAR PERFIL</span></a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="btn-solid-lg nav-link page-scroll" href="cerrar_session.php"><i class='fas fa-sign-out-alt'></i> Cerrar Sesión</a>

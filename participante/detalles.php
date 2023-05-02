@@ -13,6 +13,8 @@
             $fechaEvento=$fila["fechaEvento"];
             $imagen=$fila["imagen"];
             $duracion=$fila["Duracion"];
+            $gratuito=$fila["gratuito"];
+            $costo=$fila["costo"];
             $id_ambiente=$fila["id_ambiente"];
         }
         else{
@@ -22,7 +24,7 @@
         ?>
 <div id="details" class="accordion">    	
         
-        <div class="area-1" style="background: url('../build/img/participante/<?php echo $imagen;?>') center center no-repeat;">
+        <div class="area-1" style="background: url('../build/img/eventos/<?php echo $imagen;?>') center center no-repeat;">
        <!-- <h2><?php echo $nombre;?></h2>-->
 		</div><!-- end of area-1 on same line and no space between comments to eliminate margin white space --><div class="area-2">
             
@@ -32,6 +34,9 @@
                 <p><?php echo $descripcion;?></p>
                 
                     <p class="price"><span>Horario:</span><?php echo $fechaEvento;?></p>
+                    <?php if($gratuito='si'){?>
+                        <p class="price"><span>Costo: </span><?php echo $costo;?></p>
+                    <?php }?>
                     <span>Lugar:</span>
                     <?php echo " ";
                           $id2=$id_ambiente;
@@ -49,7 +54,7 @@
                                    
                                     ?>
                     </p>
-                    <?php echo"<a class='btn-solid-reg page-scroll'  href='reserva.php?id_evento=".$id."'>Reserva</a>";?>
+                    <?php echo"<a class='btn-solid-reg page-scroll'  href='save-reserva.php?id_evento=".$id."'>Reserva</a>";?>
                     
    
             </div> <!-- end of accordion-container -->
@@ -63,6 +68,7 @@
   <?php
   $ex="select *from horarioevento where id_evento='".$id."'";
   $devuelve=mysqli_query($conectar,$ex);
+  if($row=mysqli_fetch_row($devuelve)>0){
   ?>
 
   
@@ -120,6 +126,8 @@
             </div> <!-- end of row -->
             
         </div> <!-- end of container -->
+        <?php }
+else?>            
     </div> <!-- end of basic-2 -->
     <!-- end of team -->
 

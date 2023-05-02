@@ -1,17 +1,3 @@
-<?php 
-session_start();
-error_reporting(0);
-$varsesion= $_SESSION['usuario'];
-$id= $_SESSION['id'];
-
-//echo "$id";
-
-if($varsesion==null || $varsesion=''){//si varsesion esta nulo o vacio no puede ingresar y destruye la sesion
-    header("location:../login/usuario_login.php");
-    die();
-
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +18,7 @@ if($varsesion==null || $varsesion=''){//si varsesion esta nulo o vacio no puede 
 	<meta property="og:type" content="article" />
 
     <!-- Website Title -->
-    <title>Malvados y Asociados</title>
+    <title>Aria - Business HTML Landing Page Template</title>
     
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap&subset=latin-ext" rel="stylesheet">
@@ -42,9 +28,9 @@ if($varsesion==null || $varsesion=''){//si varsesion esta nulo o vacio no puede 
     <link href="css/swiper.css" rel="stylesheet">
 	<link href="css/magnific-popup.css" rel="stylesheet">
 	<link href="css/styles.css" rel="stylesheet">
-    
+	
 	<!-- Favicon  -->
-    <link rel="icon" href="../build/img/control/logo.avif">
+    <link rel="icon" href="images/favicon.png">
 </head>
 <body data-spy="scroll" data-target=".fixed-top">
     
@@ -65,12 +51,7 @@ if($varsesion==null || $varsesion=''){//si varsesion esta nulo o vacio no puede 
         <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Aria</a> -->
 
         <!-- Image Logo -->
-        <picture class="logo" >
-                <source  srcset="../build/img/control/logo.avif" type="image/avif">
-                <source  srcset="../build/img/control/logo.webp" type="image/webp">
-                <img  loading="lazy"  style="width:50px;" src="build/img/control/logo.avif" alt="alternative">
-        </picture>
-        <a class="nav-link page-scroll" href="index.php">Malvados y Asociados</a>
+        <a class="navbar-brand logo-image" href="index.html"><img src="images/logo.svg" alt="alternative"></a>
         
         <!-- Mobile Menu Toggle Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -82,37 +63,50 @@ if($varsesion==null || $varsesion=''){//si varsesion esta nulo o vacio no puede 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" href="#header">Inicio <span class="sr-only">(current)</span></a>
+                    <a class="nav-link page-scroll" href="#header">HOME <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" href="#intro">Nosotros</a>
+                    <a class="nav-link page-scroll" href="#intro">INTRO</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" href="#services">Eventos</a>
+                    <a class="nav-link page-scroll" href="#services">SERVICES</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" href="#contact">Contactos</a>
+                    <a class="nav-link page-scroll" href="#callMe">CALL ME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" href="#projects">Preguntas Frecuentes</a>
+                    <a class="nav-link page-scroll" href="#projects">PROJECTS</a>
                 </li>
-                <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#your-link"><i class='fa fa-user'></i>
-                         <?php //echo''.$_SESSION['id'];
-                $id=$_SESSION['id'];
-                include("../app/conexion.php");
-                $sql="select nombre, apPaterno, apMaterno from usuario where id_usuario='$id'";
-                $resultado=mysqli_query($conectar,$sql);
-                $filas=mysqli_fetch_assoc($resultado);
-                 echo $filas['nombre'].' '.$filas['apPaterno'].' '.$filas['apMaterno'];
-                    
-                ?></a>
+
+                <!-- Dropdown Menu -->          
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle page-scroll" href="#about" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">ABOUT</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="terms-conditions.html"><span class="item-text">TERMS CONDITIONS</span></a>
+                        <div class="dropdown-items-divide-hr"></div>
+                        <a class="dropdown-item" href="privacy-policy.html"><span class="item-text">PRIVACY POLICY</span></a>
+                    </div>
                 </li>
+                <!-- end of dropdown menu -->
+
                 <li class="nav-item">
-                    <a class="btn-solid-lg nav-link page-scroll" href="cerrar_session.php"><i class='fas fa-sign-out-alt'></i> Cerrar Sesión</a>
+                    <a class="nav-link page-scroll" href="#contact">CONTACT</a>
                 </li>
             </ul>
-            
+            <span class="nav-item social-icons">
+                <span class="fa-stack">
+                    <a href="#your-link">
+                        <span class="hexagon"></span>
+                        <i class="fab fa-facebook-f fa-stack-1x"></i>
+                    </a>
+                </span>
+                <span class="fa-stack">
+                    <a href="#your-link">
+                        <span class="hexagon"></span>
+                        <i class="fab fa-twitter fa-stack-1x"></i>
+                    </a>
+                </span>
+            </span>
         </div>
     </nav> <!-- end of navbar -->
     <!-- end of navbar -->
@@ -137,7 +131,7 @@ if($varsesion==null || $varsesion=''){//si varsesion esta nulo o vacio no puede 
     <!-- end of header -->
 
 
-    <!-- Inicio-->
+    <!-- Intro -->
     <div id="intro" class="basic-1">
         <div class="container">
             <div class="row">
@@ -213,63 +207,95 @@ if($varsesion==null || $varsesion=''){//si varsesion esta nulo o vacio no puede 
     <!-- end of description -->
 
 
-    <!-- Eventos -->
+    <!-- Services -->
     <div id="services" class="cards-2">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="section-title">Eventos</div>
-                    <h2>Eventos<br> Malvados y Asociados</h2>
+                    <div class="section-title">SERVICES</div>
+                    <h2>Choose The Service Package<br> That Suits Your Needs</h2>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
             <div class="row">
-            <div class="col-lg-12">
-                    <?php 
-                        include("../app/conexion.php");
-                        $sql="select * from evento";
-                        $resultado=mysqli_query($conectar,$sql);
-                        while($row=mysqli_fetch_row($resultado)){
-                        ?>
-                       
-                            <div class="card">
-                                <div class="card-image">
-                                    <img class="img-fluid" src="../build/img/participante/<?php echo $row[5];?>" alt="alternative">
-                                </div>
-                                <div class="card-body">
-                                    <h3 class="card-title"><?php echo $row[2];?></h3>
-                                    <p><?php echo $row[4];?></p>
-                                    
-                                    <p class="price"><span>Horario:</span><?php echo $row[1];?></p>
-                                    <p class="price"><span>Lugar:</span><?php echo " ";
-                                    $id2=$row[6];
-                                    $sq= " SELECT id_ambiente,nombre, ubicacion from ambiente where id_ambiente='$id2'";
-                                    $re=mysqli_query($conectar,$sq);
-                                    while($row1=mysqli_fetch_row($re)){
-                                      if($row1[0]==$id2){
-                                         echo $row1[1]." -  ".$row1[2];
-                                         echo" ";
-                                      }
-                                      else{
-          
-                                      }
-                                    }
-                                   
-                                    ?></p>
-                                    
-                                </div>
-                                <div class="button-container">
-                         
-                                
-                                <?php echo"<a class='btn-solid-reg page-scroll'  href='#details?id_evento=".$row[0]."'>Conoce mas...".$row[0]."</a>";?>
-                                    
-                                </div> <!-- end of button-container -->
-                            </div>
-                        
-                        <?php
+                <div class="col-lg-12">
+                    
+                    <!-- Card -->
+                    <div class="card">
+                        <div class="card-image">
+                            <img class="img-fluid" src="images/services-1.jpg" alt="alternative">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Off The Ground Off The Ground</h3>
+                            <p>Perfect for fresh ideas or young startups, this package will help get the business off the ground</p>
+                            <ul class="list-unstyled li-space-lg">
+                                <li class="media">
+                                    <i class="fas fa-square"></i>
+                                    <div class="media-body">Environment and competition</div>
+                                </li>
+                                <li class="media">
+                                    <i class="fas fa-square"></i>
+                                    <div class="media-body">Designing the marketing plan</div>
+                                </li>
+                            </ul>
+                            <p class="price">Starting at <span>$199</span></p>
+                        </div>
+                        <div class="button-container">
+                            <a class="btn-solid-reg page-scroll" href="#callMe">DETAILS</a>
+                        </div> <!-- end of button-container -->
+                    </div>
+                    <!-- end of card -->
 
-                        }
-                    ?>
-                   
+                    <!-- Card -->
+                    <div class="card">
+                        <div class="card-image">
+                            <img class="img-fluid" src="images/services-2.jpg" alt="alternative">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Accelerated Growth</h3>
+                            <p>Use this service pack to give your company the necessary impulse to become an industry leader</p>
+                            <ul class="list-unstyled li-space-lg">
+                                <li class="media">
+                                    <i class="fas fa-square"></i>
+                                    <div class="media-body">Business strategy planning</div>
+                                </li>
+                                <li class="media">
+                                    <i class="fas fa-square"></i>
+                                    <div class="media-body">Taking the planned actions</div>
+                                </li>
+                            </ul>
+                            <p class="price">Starting at <span>$299</span></p>
+                        </div>
+                        <div class="button-container">
+                            <a class="btn-solid-reg page-scroll" href="#callMe">DETAILS</a>
+                        </div> <!-- end of button-container -->
+                    </div>
+                    <!-- end of card -->
+
+                    <!-- Card -->
+                    <div class="card">
+                        <div class="card-image">
+                            <img class="img-fluid" src="images/services-3.jpg" alt="alternative">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Market Domination</h3>
+                            <p>You already are a reference point in your industry now you need to learn about acquisitions</p>
+                            <ul class="list-unstyled li-space-lg">
+                                <li class="media">
+                                    <i class="fas fa-square"></i>
+                                    <div class="media-body">Maintaining the leader status</div>
+                                </li>
+                                <li class="media">
+                                    <i class="fas fa-square"></i>
+                                    <div class="media-body">Acquisitions the right way</div>
+                                </li>
+                            </ul>
+                            <p class="price">Starting at <span>$299</span></p>
+                        </div>
+                        <div class="button-container">
+                            <a class="btn-solid-reg page-scroll" href="#callMe">DETAILS</a>
+                        </div> <!-- end of button-container -->
+                    </div>
+                    <!-- end of card -->
 
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
@@ -278,43 +304,52 @@ if($varsesion==null || $varsesion=''){//si varsesion esta nulo o vacio no puede 
     <!-- end of services -->
     
 
-    <!-- Detalles 1 -->
+    <!-- Details 1 -->
 	<div id="details" class="accordion">
-        <?php 
-        include("../app/conexion.php");?>
-       
 		<div class="area-1">
-        <?php
-        echo $_GET['id_evento'];
-        if(isset($_GET['id_evento'])){
-            $id=$_GET['id_evento'];
-            $sql="select *from evento where id_evento='".$id."'";
-            $resultado=mysqli_query($conectar,$sql);
-            $fila=mysqli_fetch_assoc($resultado);
-            $id_evento=$fila["id_evento"];
-            $nombre=$fila["nombreEvento"];
-            $descripcion=$fila["descripcion"];
-            $fechaEvento=$fila["fechaEvento"];
-            $imagen=$fila["imagen"];
-            $duracion=$fila["Duracion"];
-            $id_ambiente=$fila["id_ambiente"];
-        }
-        else{
-            echo "no lo capto";
-        }
-       
-        ?>
-        <h2><?php echo $nombre;?></h2>
 		</div><!-- end of area-1 on same line and no space between comments to eliminate margin white space --><div class="area-2">
             
             <!-- Accordion -->
             <div class="accordion-container" id="accordionOne">
-                <h2><?php echo $nombre;?></h2>
-               
+                <h2>Accelerate Business Growth To Improve Revenue Numbers</h2>
+                <div class="item">
+                    <div id="headingOne">
+                        <span data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" role="button">
+                            <span class="circle-numbering">1</span><span class="accordion-title">How Can Aria Help Your Business</span>
+                        </span>
+                    </div>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionOne">
+                        <div class="accordion-body">
+                            At Aria solutions, we’ve taken the consultancy concept one step further by offering a full service management organization with expertise.
+                        </div>
+                    </div>
+                </div> <!-- end of item -->
             
-                
+                <div class="item">
+                    <div id="headingTwo">
+                        <span class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" role="button">
+                            <span class="circle-numbering">2</span><span class="accordion-title">Great Strategic Business Planning</span>
+                        </span>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionOne">
+                        <div class="accordion-body">
+                            Aria partners with businesses to business growth and development ideas including environment analysis, plan execution and evaluation.
+                        </div>
+                    </div>
+                </div> <!-- end of item -->
             
-                
+                <div class="item">
+                    <div id="headingThree">
+                        <span class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" role="button">
+                            <span class="circle-numbering">3</span><span class="accordion-title">Online Marketing Campaigns</span>
+                        </span>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionOne">
+                        <div class="accordion-body">
+                            An awesome online marketing plan won't save your bad product but paired with a good product, the sky is the limit for what can be achieved.
+                        </div>
+                    </div>
+                </div> <!-- end of item -->
             </div> <!-- end of accordion-container -->
             <!-- end of accordion -->
 
@@ -324,7 +359,7 @@ if($varsesion==null || $varsesion=''){//si varsesion esta nulo o vacio no puede 
 
 
     <!-- Details 2 -->
-	<div id="details" class="tabs">
+	<div class="tabs">
         <div class="area-1">
             <div class="tabs-container">
                 

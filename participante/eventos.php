@@ -12,16 +12,20 @@
             <div class="col-lg-12">
                     <?php 
                         include("../app/conexion.php");
-                        $sql="select * from evento";
+                        $sql="select * from evento where fechaEvento >= CURDATE() ORDER BY fechaEvento ASC";
+              
                         $resultado=mysqli_query($conectar,$sql);
                         while($row=mysqli_fetch_row($resultado)){
+                            //condicionar mostrar si el evento es presente y futuro no mostrar eventos pasados
+                                
                         ?>
                        
                             <div class="card">
                                 <div class="card-image">
-                                    <img class="img-fluid" src="../build/img/participante/<?php echo $row[5];?>" alt="alternative">
+                                    
                                 </div>
                                 <div class="card-body">
+                                <img class="img-fluid" src="../build/img/eventos/<?php echo $row[5];?>" alt="alternative">
                                     <h3 class="card-title"><?php echo $row[2];?></h3>
                                     
                                     
@@ -51,7 +55,7 @@
                             </div>
                         
                         <?php
-
+                            
                         }
                     ?>
                    
