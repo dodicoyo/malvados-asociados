@@ -18,7 +18,7 @@ if($varsesion==null || $varsesion=''){//si varsesion esta nulo o vacio no puede 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto 281</title>
+    <title>Malvados y Asociados</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
@@ -26,7 +26,8 @@ if($varsesion==null || $varsesion=''){//si varsesion esta nulo o vacio no puede 
     <link rel="stylesheet" href="../build/css/app.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
+    <link rel="icon" href="../build/img/control/logo.avif">
+    
 
 </head>
 
@@ -50,13 +51,14 @@ if($varsesion==null || $varsesion=''){//si varsesion esta nulo o vacio no puede 
             <a href="infraestructura.php">Infraestructura Fisica</a>
             <a href="ambiente.php">Ambiente</a>
             <a href="reserva.php">Reserva</a>
-                <a href="crear-ambiente.php">Certificado</a>
-                <a href="tipoevento.php">Tipos de Eventos</a>
+            <a href="participante.php">Participante</a>
+                <a href="#">Certificado</a>
+                
         </nav>
     </aside>
     <div class="principal">
         <div class="barra flex">
-            
+            <img src="../build/img/control/sara.webp"  style="width:40px;height:23px;" class="rounded-pill">
             <p>Hola: <span>
                 <?php //echo''.$_SESSION['id'];
                 $id=$_SESSION['id'];
