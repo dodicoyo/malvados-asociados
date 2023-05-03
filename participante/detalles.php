@@ -3,6 +3,7 @@
 <?php include("../app/conexion.php");?>
 <?php
         if(isset($_GET['id_evento'])){
+            $id_usuario=$_SESSION['id'];
             $id=$_GET['id_evento'];
             $sql="select *from evento where id_evento='".$id."'";
             $resultado=mysqli_query($conectar,$sql);
@@ -16,6 +17,12 @@
             $gratuito=$fila["gratuito"];
             $costo=$fila["costo"];
             $id_ambiente=$fila["id_ambiente"];
+            $consulta="select * from participante where id_evento='".$id."'&& id_usuario='".$id_usuario."'";
+            $esparticipante=mysqli_query($conectar,$consulta);
+            $loco1="SELECT COUNT(*) AS cantidad FROM participante WHERE id_evento = '".$id."'";
+            $resloco=mysqli_query($conectar,$loco1);
+            $filoco=mysqli_fetch_assoc($resloco);
+            $parevento=$filoco['cantidad'];
         }
         else{
             echo "no lo capto";
@@ -40,22 +47,29 @@
                     <span>Lugar:</span>
                     <?php echo " ";
                           $id2=$id_ambiente;
-                                   $sq= " SELECT id_ambiente,nombre, ubicacion from ambiente where id_ambiente='$id2'";
+                                   $sq= " SELECT id_ambiente,nombre, ubicacion,capacidad from ambiente where id_ambiente='$id2'";
                                     $re=mysqli_query($conectar,$sq);
                                     while($row1=mysqli_fetch_row($re)){
                                       if($row1[0]==$id2){
                                          echo $row1[1]." -  ".$row1[2];
                                          echo" ";
-                                      }
-                                      else{
-          
+                                         $capacidad=$row1[3];
                                       }
                                     }
                                    
                                     ?>
                     </p>
-                    <?php echo"<a class='btn-solid-reg page-scroll'  href='save-reserva.php?id_evento=".$id."'>Reserva</a>";?>
-                    
+                    <?php 
+                   $loco= mysqli_num_rows($esparticipante);
+                    if($loco>0)//condicion si el usuario ya es pariticpante pueda ver el repositorio
+                    {echo"<a class='btn-solid-reg page-scroll'  href='save-reserva.php?id_evento=".$id."'>Repositorio</a>";}
+                    elseif ($parevento<=$capacidad) //condicion para ver si el evento tiene o no cupo dependiendo la capacidad del ambiente
+                    {
+                        if($costo=='0'){echo"<a class='btn-solid-reg page-scroll'  href='save-inscrito.php?id_evento=".$id."'>Inscripción</a>";}
+                        else{echo"<a class='btn-solid-reg page-scroll'  href='save-reserva.php?id_evento=".$id."'>Reserva</a>";}
+                   }
+                    else{echo "el número máximo de participantes ha sido completado";}
+                    ?>
    
             </div> <!-- end of accordion-container -->
             <!-- end of accordion -->

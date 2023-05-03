@@ -60,6 +60,7 @@
                                     }
                                     else{
                                     echo "estado de pago: ".$fila['estado_pago'];
+                                        
                                     }
                                     ?>
                                 </div>                          

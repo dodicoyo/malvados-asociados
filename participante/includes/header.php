@@ -64,11 +64,12 @@ if($varsesion==null || $varsesion=''){//si varsesion esta nulo o vacio no puede 
         <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Aria</a> -->
 
         <!-- Image Logo -->
-        <picture class="logo" >
-                <source  srcset="../build/img/control/logo.avif" type="image/avif">
-                <source  srcset="../build/img/control/logo.webp" type="image/webp">
-                <img  loading="lazy"  style="width:50px;" src="build/img/control/logo.png" alt="alternative">
-        </picture>
+       <!--<picture class="logo" >
+                <source  srcset="../../build/img/control/logo.avif" type="image/avif">
+                <source  srcset="../../build/img/control/logo.webp" type="image/webp">
+                <img  loading="lazy"  style="width:50px;" src="../build/img/control/logo.png" alt="alternative">
+        </picture>-->
+        <img  loading="lazy"  width="50" heigth="80" src="../build/img/control/logo.webp" alt="desdeaqui">
         <a class="nav-link page-scroll" href="index.php">Malvados y Asociados</a>
         
         <!-- Mobile Menu Toggle Button -->

@@ -37,12 +37,15 @@ if($varsesion==null || $varsesion=''){//si varsesion esta nulo o vacio no puede 
        
         <div class="logo-principal">
             
-            <picture class="logo flex" >
+            <!--<picture class="logo flex" >
                 <source  srcset="../build/img/control/logo.avif" type="image/avif">
                 <source  srcset="../build/img/control/logo.webp" type="image/webp">
-                <img  loading="lazy"  width="50" heigth="100" src="build/img/control/logo.png" alt="MaAs">
+                <img  loading="lazy"  width="50" heigth="100" src="../build/img/control/logo.webp" alt="MaAs">
             
             </picture>
+-->
+            <img  loading="lazy"  width="50" heigth="80" src="../build/img/control/logo.webp" alt="desdeaqui">
+            
             <a href="index.php"><h3>  Malvados y Asociados </h3></a>
          
         </div>
@@ -53,7 +56,6 @@ if($varsesion==null || $varsesion=''){//si varsesion esta nulo o vacio no puede 
             <a href="reserva.php">Reserva</a>
             <a href="participante.php">Participante</a>
                 <a href="#">Certificado</a>
-                
         </nav>
     </aside>
     <div class="principal">
