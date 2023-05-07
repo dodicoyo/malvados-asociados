@@ -40,7 +40,11 @@
                 <h2><?php echo $nombre;?></h2>
                 <p><?php echo $descripcion;?></p>
                 
-                    <p class="price"><span>Horario:</span><?php echo $fechaEvento;?></p>
+                    <p class="price"><span>Horario:</span><?php 
+                    $fecha_inicio = DateTime::createFromFormat('Y-m-d', $fechaEvento);
+                    $fecha_fin = $fecha_inicio->add(new DateInterval("P{$duracion}D"));
+                    $fecha_fin_1= $fecha_fin->format('Y-m-d');
+                    echo $fechaEvento." al ".$fecha_fin_1;?></p>
                     <?php if($gratuito='si'){?>
                         <p class="price"><span>Costo: </span><?php echo $costo;?></p>
                     <?php }?>

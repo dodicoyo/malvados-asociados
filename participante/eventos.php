@@ -29,7 +29,13 @@
                                     <h3 class="card-title"><?php echo $row[2];?></h3>
                                     
                                     
-                                    <p class="price"><span>Horario:</span><?php echo $row[1];?></p>
+                                    <p class="price"><span>Horario:</span><?php 
+                                    $d=$row[3]-1;
+                                    $e=$row[1];
+                                    $fecha_inicio = DateTime::createFromFormat('Y-m-d', $e);
+                                    $fecha_fin = $fecha_inicio->add(new DateInterval("P{$d}D"));
+                                    $fecha_fin_1= $fecha_fin->format('Y-m-d');
+                                    echo $row[1]." al ".$fecha_fin_1;?></p>
                                     <p class="price"><span>Lugar:</span><?php echo " ";
                                     $id2=$row[6];
                                     $sq= " SELECT id_ambiente,nombre, ubicacion from ambiente where id_ambiente='$id2'";

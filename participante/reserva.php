@@ -32,12 +32,17 @@
                                 </div>
                                 <div class="col-lg-10">
                                 <p class="card-text"><?php
-                                $d=$f['Duracion'];
+                                $d=$f['Duracion']-1;
                                 $e=$f['fechaEvento'];
-                                $fin="SELECT DATE_ADD(fechaEvento, INTERVAL Duracion DAY) AS fechaFin FROM evento where id_evento='".$id_evento."'";
+                                /*$fin="SELECT DATE_ADD(fechaEvento, INTERVAL Duracion-1 DAY) AS fechaFin FROM evento where id_evento='".$id_evento."'";
                                 $fr=mysqli_query($conectar,$fin);
-                                $frr=mysqli_fetch_row($fr);
-                                echo "Fecha del Evento: ".$e." a ".$frr[0];?></p> 
+                                $frr=mysqli_fetch_row($fr);*/
+                                $fecha_inicio = DateTime::createFromFormat('Y-m-d', $e);
+                                // Sumar la duración del evento en días a la fecha de inicio
+                                $fecha_fin = $fecha_inicio->add(new DateInterval("P{$d}D"));
+                                // Obtener la fecha de fin en formato 'Y-m-d'
+                                $frr = $fecha_fin->format('Y-m-d');
+                                echo "Fecha del Evento: ".$e." a ".$frr;?></p> 
                                     <p class="card-text"><?php   echo "Fecha de la reserva: ".$fila['fecha_reserva'];?></p>   
                                     <p class="card-text"><?php  
                                     $fl="SELECT DATE_ADD(fecha_reserva, INTERVAL '2' DAY) AS fechalim FROM reserva where id_reserva='".$id_reserva."'";
