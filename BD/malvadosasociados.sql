@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-05-2023 a las 23:58:38
+-- Tiempo de generación: 10-05-2023 a las 01:18:45
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -65,7 +65,7 @@ INSERT INTO `ambiente` (`id_ambiente`, `nombre`, `descripcion`, `capacidad`, `ub
 (4, 'lab2', 'piso 3', 20, 'ed', 'lab'),
 (5, 'Auditorio', 'Auditorio', 200, 'Facultad de Ciencias Agrarias y Forestales, Universidad Juan Misael Saracho', 'Auditorio'),
 (6, 'Auditorio', 'a', 100, 'Universidad Autónoma René Moreno', 'auditorio'),
-(7, 'Campus Universitario', NULL, NULL, 'Cota Cota (ingreso calle 31 de Cota Cota)', NULL),
+(7, 'Campus Universitario', NULL, 100, 'Cota Cota (ingreso calle 31 de Cota Cota)', NULL),
 (8, 'Real Plaza Hotel & Convention Center', '(Ex - Radisson)', 24, 'Av. Arce 2177 - La Paz - Bolivia', NULL),
 (9, 'Atrio al Monoblock Central', '', 50, 'UMSA', NULL);
 
@@ -78,10 +78,45 @@ INSERT INTO `ambiente` (`id_ambiente`, `nombre`, `descripcion`, `capacidad`, `ub
 CREATE TABLE `asistencia` (
   `id_asistencia` int(20) NOT NULL,
   `id_evento` int(20) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
   `fecha` date NOT NULL,
   `hora_entrada` time NOT NULL,
   `detalle_asistencia` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `asistencia`
+--
+
+INSERT INTO `asistencia` (`id_asistencia`, `id_evento`, `id_usuario`, `fecha`, `hora_entrada`, `detalle_asistencia`) VALUES
+(8, 3, 4, '2023-05-07', '07:25:44', 'asistió'),
+(9, 3, 22, '2023-05-07', '07:26:07', 'asistió'),
+(10, 3, 5, '2023-05-07', '07:26:31', 'asistió'),
+(11, 2, 18, '2023-05-06', '21:51:56', 'asistió'),
+(12, 2, 18, '2023-05-07', '21:52:06', 'asistió'),
+(13, 2, 18, '2023-05-08', '21:52:16', 'asistió'),
+(14, 2, 17, '2023-05-06', '21:52:47', 'asistió'),
+(15, 2, 17, '2023-05-08', '21:52:52', 'asistió'),
+(16, 2, 16, '2023-05-06', '21:53:02', 'asistió'),
+(17, 2, 16, '2023-05-07', '21:53:55', 'asistió'),
+(18, 2, 16, '2023-05-08', '21:54:10', 'asistió'),
+(19, 3, 22, '2023-05-08', '22:04:24', 'asistió'),
+(20, 3, 4, '2023-05-09', '22:04:31', 'asistió'),
+(21, 3, 5, '2023-05-08', '22:04:39', 'asistió'),
+(22, 3, 5, '2023-05-09', '22:04:56', 'asistió'),
+(23, 3, 22, '2023-05-09', '22:05:04', 'asistió'),
+(24, 14, 21, '2023-05-09', '16:16:17', 'asistió'),
+(25, 14, 20, '2023-05-09', '16:16:17', 'asistió'),
+(26, 14, 19, '2023-05-09', '16:16:17', 'asistió'),
+(27, 15, 20, '2023-05-08', '16:16:17', 'asistió'),
+(28, 15, 20, '2023-05-09', '16:16:17', 'asistió'),
+(29, 15, 20, '2023-05-10', '16:16:17', 'asistió'),
+(30, 15, 21, '2023-05-09', '16:16:17', 'asistió'),
+(31, 15, 21, '2023-05-08', '16:16:17', 'asistió'),
+(32, 15, 21, '2023-05-10', '16:16:17', 'asistió'),
+(33, 15, 19, '2023-05-09', '16:16:17', 'asistió'),
+(34, 15, 19, '2023-05-08', '16:16:17', 'asistió'),
+(35, 3, 22, '2023-05-09', '22:22:31', 'asistió');
 
 -- --------------------------------------------------------
 
@@ -202,22 +237,25 @@ CREATE TABLE `evento` (
   `id_ambiente` int(11) NOT NULL,
   `gratuito` varchar(2) DEFAULT 'no',
   `costo` decimal(10,0) DEFAULT NULL,
-  `fechaFin` date DEFAULT NULL
+  `fechaFin` date DEFAULT NULL,
+  `hora_ini` time NOT NULL,
+  `hora_fin` time NOT NULL,
+  `estado` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `evento`
 --
 
-INSERT INTO `evento` (`id_evento`, `fechaEvento`, `nombreEvento`, `Duracion`, `descripcion`, `imagen`, `id_ambiente`, `gratuito`, `costo`, `fechaFin`) VALUES
-(1, '2023-04-13', '1 CONGRESO NACIONAL DE COMUNICACION SOCIAL Y TURISMO', 3, 'Primer Congreso Nacional de comunicación social y turismo y no pueden perder esta oportunidad única! ?? Hemos preparado un evento lleno de aprendizaje, diversión y crecimiento personal y profesional.', 'turismo.png', 2, 'no', '200', '2023-05-15'),
-(2, '2023-05-13', 'XIII CONGRESO NACIONAL DE CIENCIAS ECONOMICAS, CONTABLES, FINANCIERAS Y EMPRESARIALES ', 3, 'Nos complace anunciar el lanzamiento del Congreso Nacional de Ciencias Económicas, Contables, Financieras y Empresariales más grande de Bolivia. 🥳\r\nEste evento imperdible tendrá lugar en la chura Tarija los días 13, 14 y 15 de abril.\r\nNo pierdas la oportunidad de ser parte de esta experiencia única e inolvidable. ', 'eco.png', 1, 'no', '200', '2023-05-15'),
-(3, '2023-05-13', 'IV CONGRESO NACIONAL DE CIENCIAS DE LA COMPUTACIÓN, INFORMÁTICA, SISTEMA Y TELECOMUNICACIONES', 3, 'Congreso Nacional de Ciencias de la computación-Informática-Sistemas y Telecomunicaciones y no pueden perder esta oportunidad única! 🙌🤓\r\nHemos preparado un evento lleno de aprendizaje, diversión y crecimiento personal y profesional.', 'info.png', 5, 'no', '200', '2023-05-15'),
-(4, '2023-05-13', 'XL CONGRESO NACIONAL DE INGENIERÍA MECÁNICA, ELECTRÓNICA, INDUSTRIAL Y RAMAS AFINES', 3, 'XL Congreso Nacional de ingeniería mecánica, electrónica, industrial y ramas afines y no pueden perder esta oportunidad única! 🙌🤓\r\nHemos preparado un evento lleno de aprendizaje, diversión y crecimiento personal y profesional.', 'mecanica.png', 6, 'no', '200', '2023-04-15'),
-(5, '2023-05-13', '3º CONGRESO NACIONAL DE PSICOLOGÍA PEDAGOGÍA Y CIENCIAS DE LA EDUCACIÓN', 3, 'Congreso Nacional de psicología, pedagogía y ciencias de la educación y no pueden perder esta oportunidad única! 🙌🤓\r\nHemos preparado un evento lleno de aprendizaje, diversión y crecimiento personal y profesional.', 'psico.png', 3, 'no', '200', '2023-05-15'),
-(14, '2023-07-15', 'PRIMERA FERIA \"COSTUMBRES Y TRADICIONES PACEÑAS\"', 0, 'Primera feria \"Costumbres y Tradiciones Paceñas\", en homenaje a los 213 años del primer grito libertario de América', 'costumbre.jpg', 9, 'si', '0', '2023-07-15'),
-(15, '2023-05-03', 'CONGRESO NACIONAL CRISIS CLIMÁTICA - DEL 3 AL 5 DE MAYO DE 2023', 3, '', 'climatica.jpg', 8, 'si', '0', '2023-05-05'),
-(16, '2023-10-14', 'FERIA A PUERTAS ABIERTAS (SEGUNDA VERSIÓN)', 0, 'La carrera de Ingeniería Industrial y el Instituto de Investigaciones Industriales de la #UMSA invitan a la población a visitar la:', 'feria.jpg', 7, 'si', '0', '2023-10-14');
+INSERT INTO `evento` (`id_evento`, `fechaEvento`, `nombreEvento`, `Duracion`, `descripcion`, `imagen`, `id_ambiente`, `gratuito`, `costo`, `fechaFin`, `hora_ini`, `hora_fin`, `estado`) VALUES
+(1, '2023-04-13', '1 CONGRESO NACIONAL DE COMUNICACION SOCIAL Y TURISMO', 3, 'Primer Congreso Nacional de comunicación social y turismo y no pueden perder esta oportunidad única! ?? Hemos preparado un evento lleno de aprendizaje, diversión y crecimiento personal y profesional.', 'turismo.png', 2, 'no', '200', '2023-05-15', '09:00:00', '18:00:00', ''),
+(2, '2023-05-07', 'XIII CONGRESO NACIONAL DE CIENCIAS ECONOMICAS, CONTABLES, FINANCIERAS Y EMPRESARIALES ', 3, 'Nos complace anunciar el lanzamiento del Congreso Nacional de Ciencias Económicas, Contables, Financieras y Empresariales más grande de Bolivia. 🥳\r\nEste evento imperdible tendrá lugar en la chura Tarija los días 13, 14 y 15 de abril.\r\nNo pierdas la oportunidad de ser parte de esta experiencia única e inolvidable. ', 'eco.png', 1, 'no', '200', '2023-05-15', '09:00:00', '18:00:00', ''),
+(3, '2023-05-07', 'IV CONGRESO NACIONAL DE CIENCIAS DE LA COMPUTACIÓN, INFORMÁTICA, SISTEMA Y TELECOMUNICACIONES', 3, 'Congreso Nacional de Ciencias de la computación-Informática-Sistemas y Telecomunicaciones y no pueden perder esta oportunidad única! 🙌🤓\r\nHemos preparado un evento lleno de aprendizaje, diversión y crecimiento personal y profesional.', 'info.png', 5, 'no', '200', '2023-05-15', '09:00:00', '18:00:00', ''),
+(4, '2023-05-13', 'XL CONGRESO NACIONAL DE INGENIERÍA MECÁNICA, ELECTRÓNICA, INDUSTRIAL Y RAMAS AFINES', 3, 'XL Congreso Nacional de ingeniería mecánica, electrónica, industrial y ramas afines y no pueden perder esta oportunidad única! 🙌🤓\r\nHemos preparado un evento lleno de aprendizaje, diversión y crecimiento personal y profesional.', 'mecanica.png', 6, 'no', '200', '2023-04-15', '09:00:00', '18:00:00', ''),
+(5, '2023-05-13', '3º CONGRESO NACIONAL DE PSICOLOGÍA PEDAGOGÍA Y CIENCIAS DE LA EDUCACIÓN', 3, 'Congreso Nacional de psicología, pedagogía y ciencias de la educación y no pueden perder esta oportunidad única! 🙌🤓\r\nHemos preparado un evento lleno de aprendizaje, diversión y crecimiento personal y profesional.', 'psico.png', 3, 'no', '200', '2023-05-15', '09:00:00', '18:00:00', ''),
+(14, '2023-05-09', 'PRIMERA FERIA \"COSTUMBRES Y TRADICIONES PACEÑAS\"', 1, 'Primera feria \"Costumbres y Tradiciones Paceñas\", en homenaje a los 213 años del primer grito libertario de América', 'costumbre.jpg', 9, 'no', '0', '2023-07-15', '10:00:00', '16:00:00', ''),
+(15, '2023-05-08', 'CONGRESO NACIONAL CRISIS CLIMÁTICA - DEL 3 AL 5 DE MAYO DE 2023', 3, '', 'climatica.jpg', 8, 'si', '0', '2023-05-05', '07:00:00', '12:00:00', ''),
+(16, '2023-10-14', 'FERIA A PUERTAS ABIERTAS (SEGUNDA VERSIÓN)', 1, 'La carrera de Ingeniería Industrial y el Instituto de Investigaciones Industriales de la #UMSA invitan a la población a visitar la:', 'feria.jpg', 7, 'si', '0', '2023-10-14', '09:00:00', '15:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -324,7 +362,6 @@ CREATE TABLE `participante` (
   `id_usuario` int(20) NOT NULL,
   `id_evento` int(20) NOT NULL,
   `fecha_participante` date NOT NULL,
-  `estado_participante` varchar(45) NOT NULL,
   `codigo_qr` varchar(225) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -332,13 +369,20 @@ CREATE TABLE `participante` (
 -- Volcado de datos para la tabla `participante`
 --
 
-INSERT INTO `participante` (`id_participante`, `id_usuario`, `id_evento`, `fecha_participante`, `estado_participante`, `codigo_qr`) VALUES
-(3, 4, 4, '2023-05-01', 'completado', ''),
-(13, 4, 1, '2023-05-03', '', ''),
-(14, 2, 2, '2023-05-03', '', ''),
-(15, 22, 3, '2023-05-03', '', ''),
-(16, 4, 16, '2023-05-04', 'completado', ''),
-(17, 4, 15, '2023-05-04', 'completado', '');
+INSERT INTO `participante` (`id_participante`, `id_usuario`, `id_evento`, `fecha_participante`, `codigo_qr`) VALUES
+(1, 4, 15, '2023-05-09', NULL),
+(2, 4, 3, '2023-05-09', NULL),
+(7, 22, 3, '2023-05-09', NULL),
+(9, 5, 3, '2023-05-09', NULL),
+(10, 19, 14, '2023-05-09', NULL),
+(11, 19, 15, '2023-05-09', NULL),
+(12, 20, 15, '2023-05-09', NULL),
+(13, 20, 14, '2023-05-09', NULL),
+(14, 21, 15, '2023-05-09', NULL),
+(15, 21, 14, '2023-05-09', NULL),
+(16, 18, 2, '2023-05-09', NULL),
+(23, 17, 2, '2023-05-09', NULL),
+(24, 16, 2, '2023-05-09', NULL);
 
 -- --------------------------------------------------------
 
@@ -363,8 +407,6 @@ CREATE TABLE `sitio` (
   `id_sitio` int(20) NOT NULL,
   `objetivos` text NOT NULL,
   `valores` text NOT NULL,
-  `mision` text NOT NULL,
-  `vision` text NOT NULL,
   `nombre` varchar(20) NOT NULL,
   `ubicacion` text DEFAULT NULL,
   `telefono` varchar(10) DEFAULT NULL,
@@ -373,15 +415,17 @@ CREATE TABLE `sitio` (
   `faceboock` varchar(50) DEFAULT NULL,
   `twitter` varchar(50) DEFAULT NULL,
   `imagen` varchar(20) DEFAULT NULL,
-  `quines somos` text DEFAULT NULL
+  `quines somos` text DEFAULT NULL,
+  `email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `sitio`
 --
 
-INSERT INTO `sitio` (`id_sitio`, `objetivos`, `valores`, `mision`, `vision`, `nombre`, `ubicacion`, `telefono`, `celular`, `instagram`, `faceboock`, `twitter`, `imagen`, `quines somos`) VALUES
-(1, 'Difundir y proyectar', 'Desarrollar política', 'La misión del CAETI ', 'El Centro de Altos E', 'CIITI', 'alemania', '435610', '3456878', 'https://youtu.be/xYSu1KSnxtc', 'https://youtu.be/xYSu1KSnxtc', 'https://youtu.be/xYSu1KSnxtc', 'https://youtu.be/xYS', 'El CAETI como unidad académica, abocada a contribuir al desarrollo de las TIC\'s, lleva adelante la investigación básica y aplicada en diversas áreas. Formando los recursos humanos para la investigación y transfiriendo los resultados de las investigaciones hacia la industria y a la sociedad; sustentando el progreso integral del individuo y el conocimiento para que los logros trasciendan.');
+INSERT INTO `sitio` (`id_sitio`, `objetivos`, `valores`, `nombre`, `ubicacion`, `telefono`, `celular`, `instagram`, `faceboock`, `twitter`, `imagen`, `quines somos`, `email`) VALUES
+(1, '[value-2]', '23 años de dedicación exclusiva al perfeccionamiento docente Un gran equipo de profesionales altamente calificados, validados en Registro ATE, SENCE, y en todos los organismos requeridos. Una amplia oferta: Presencial para implementar en todo Chile y Online, para todo América y países hispanoparlantes. Plataformas complementarias para el aprendizaje, que permiten el acceso de los participantes a sus manuales, materiales, infografías, recursos interactivos, etc', 'Malvados y Asociados', 'Plaza San Francisco, CA 94043, La Paz-Bolivia', '74087924', '64104061', '[value-10]', '[value-11]', '[value-12]', 'logo.png', 'Invita a presentar trabajos que reporten resultados de naturaleza teórica y/o práctica que avancen el estado del arte o presenten aplicaciones o casos relevantes en las áreas de interés de los simposios y eventos asociados. CLEI XLIX tendrá lugar en la ciudad de La Paz, Bolivia, evento organizado por la Universidad Mayor de San Andrés – Carrera de Informática, del 16 al 20 de octubre de 2023, el cual se compone de 4 Tracks y eventos asociados', 'malvadosyasociados@gmail.com'),
+(1, '[value-2]', '23 años de dedicación exclusiva al perfeccionamiento docente Un gran equipo de profesionales altamente calificados, validados en Registro ATE, SENCE, y en todos los organismos requeridos. Una amplia oferta: Presencial para implementar en todo Chile y Online, para todo América y países hispanoparlantes. Plataformas complementarias para el aprendizaje, que permiten el acceso de los participantes a sus manuales, materiales, infografías, recursos interactivos, etc', 'Malvados y Asociados', 'Plaza San Francisco, CA 94043, La Paz-Bolivia', '74087924', '64104061', '[value-10]', '[value-11]', '[value-12]', 'logo.png', 'Invita a presentar trabajos que reporten resultados de naturaleza teórica y/o práctica que avancen el estado del arte o presenten aplicaciones o casos relevantes en las áreas de interés de los simposios y eventos asociados. CLEI XLIX tendrá lugar en la ciudad de La Paz, Bolivia, evento organizado por la Universidad Mayor de San Andrés – Carrera de Informática, del 16 al 20 de octubre de 2023, el cual se compone de 4 Tracks y eventos asociados', 'malvadosyasociados@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -425,12 +469,10 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id_usuario`, `nombre`, `apPaterno`, `apMaterno`, `email`, `password`, `estado`, `identidad`, `foto`, `usuario`, `celular`, `fechaRegistro`, `token`) VALUES
 (1, 'Juan ', 'Perez', 'Choque', 'juanperez@gmail.com', 'cado1356', '', '6565656', '', 'juanperez@gmail.com', '', '2023-04-02', ''),
-(2, 'Pedro', 'Cortez', 'Lara', 'jcoyoq@fcpn.edu.bo', 'cabo', '', '6767676', '', 'jcoyoq@fcpn.edu.bo', '', '2023-03-25', ''),
 (3, 'Sara', 'Copa', 'Flores', 'sara@gmail.com', '2468', 'activo', '8377943', 'sara.jpg', 'sara@gmail.com', '64104061', '2023-04-02', ''),
-(4, 'Kamil', 'Chavez', 'Mendoza', 'kchavezm@fcpn.edu.bo', '123456', 'activo', '6106548', 'k.jpg', 'kchavezm@fcpn.edu.bo', '68090089', '2023-04-23', ''),
-(5, 'DIEGO JIMMY ', 'CONDORI', 'MONTES', 'dcondorim@fcpn.edu.bo', '13579', 'caducado session', '8844965', 'diego.jpg', 'dcondorim@fcpn.edu.bo', '67318226', '2023-04-23', ''),
+(4, 'Kamil', 'Chavez', 'Mendoza', 'kchavezm@fcpn.edu.bo', '123456', 'activo', '6106548', 'kamil.jpeg', 'kchavezm@fcpn.edu.bo', '68090089', '2023-04-23', ''),
+(5, 'DIEGO JIMMY ', 'CONDORI', 'MONTES', 'dcondorim@fcpn.edu.bo', '13579', 'caducado session', '8844965', 'diego.jpeg', 'dcondorim@fcpn.edu.bo', '67318226', '2023-04-23', ''),
 (6, 'Waldo', 'Caballero', 'Toledo', 'toledo@umsa.bo', '123456', 'activo', '6666666', 'toledo.jpg', 'toledo@umsa.bo', '71264934', '2023-04-23', '123456'),
-(7, 'vivian', 'Tito', 'Quispe', '', NULL, NULL, '15087633', NULL, NULL, NULL, '2023-04-26', NULL),
 (8, 'MARCO ANTONIO', 'LAZARTE ', 'HURTADO', 'marcolazarteurtado@gmail.com', '123456', NULL, '1234561', 'marcolazarte.jpg', 'marcolazartehurtado@gmail.com', '1234561', '2023-04-30', '1234561'),
 (9, 'WILLIAM DAVID', ' RIVAS ', 'TAPIA', 'william@gmail.com', NULL, NULL, '1234562', 'williamdavid.png', 'william@gmail.com', '1234562', '2023-04-30', '1234562'),
 (10, 'JAVIER ZENOBIO ', 'CALDERON ', 'GUERRA', 'calderon@gmail.com', NULL, NULL, '1234563', 'calderon.png', NULL, NULL, NULL, NULL),
@@ -439,13 +481,13 @@ INSERT INTO `usuario` (`id_usuario`, `nombre`, `apPaterno`, `apMaterno`, `email`
 (13, 'RIMORT EDSON ', 'CHAVEZ ', 'ARAUJO', 'cavez@gmail.com', NULL, NULL, '', 'rimort.png', NULL, NULL, NULL, NULL),
 (14, 'LUCIO ', 'COPA ', 'JUANIQUINA', 'copa@gmail.com', NULL, NULL, '', 'lucio.jpg', NULL, NULL, NULL, NULL),
 (15, ' JOSÉ LUIS ', 'MURILLO ', 'PACHECO', 'murillo@gmail.com', NULL, NULL, '', 'jose.png', NULL, NULL, NULL, NULL),
-(16, ' LUIS DIEGO', ' MARIACA ', 'COLLAZOS', 'mariaca@gmail.com', NULL, NULL, '', 'mariaca.png', NULL, NULL, NULL, NULL),
-(17, 'ZENOBIO FERNANDO ', 'QUEZADA ', 'MANZANEDA', 'quezada@gmail.com', NULL, NULL, '', 'fernando.png', NULL, NULL, NULL, NULL),
-(18, 'OSCAR ', 'MAMANI ', 'CHUQUIMIA', 'mamani@gmail.com', NULL, NULL, '', 'oscar.png', NULL, NULL, NULL, NULL),
-(19, 'VICTOR SANTOS ', 'SAAVEDRA ', 'CONTRERAS', 'saavedra@gmail.com', NULL, NULL, '', 'victor.png', NULL, NULL, NULL, NULL),
-(20, ' IVER FERNANDO ', 'AJATA ', 'VALERIANO', 'ajata@gmail.com', NULL, NULL, '12345678', 'iver.png', NULL, NULL, NULL, NULL),
-(21, ' EVELYN GLORIA ', 'MOLINA ', 'PEÑARRIETA', 'molina@gmail.com', NULL, NULL, '', 'molina.png', NULL, NULL, NULL, NULL),
-(22, 'Luis David', 'Tomicha', 'Villarroel', 'ltomichav@fcpn.edu.bo', '13579', 'activo', '12636278', 'david.jpg', 'ltomichav@fcpn.edu.bo', '63559081', '2023-05-02', NULL);
+(16, ' LUIS DIEGO', ' MARIACA ', 'COLLAZOS', 'mariaca@gmail.com', '1', NULL, '', 'mariaca.png', 'mariaca@gmail.com', NULL, NULL, NULL),
+(17, 'ZENOBIO FERNANDO ', 'QUEZADA ', 'MANZANEDA', 'quezada@gmail.com', '1', NULL, '', 'fernando.png', 'quezada@gmail.com', NULL, NULL, NULL),
+(18, 'OSCAR ', 'MAMANI ', 'CHUQUIMIA', 'mamani@gmail.com', '1', NULL, '', 'oscar.png', 'mamani@gmail.com', NULL, NULL, NULL),
+(19, 'VICTOR SANTOS ', 'SAAVEDRA ', 'CONTRERAS', 'saavedra@gmail.com', '1', NULL, '', 'victor.png', 'saavedra@gmail.com', NULL, NULL, NULL),
+(20, ' IVER FERNANDO ', 'AJATA ', 'VALERIANO', 'ajata@gmail.com', '1', NULL, '12345678', 'iver.png', 'ajata@gmail.com', NULL, NULL, NULL),
+(21, ' EVELYN GLORIA ', 'MOLINA ', 'PEÑARRIETA', 'molina@gmail.com', '1', NULL, '', 'molina.png', 'molina@gmail.com', NULL, NULL, NULL),
+(22, 'Luis David', 'Tomicha', 'Villarroel', 'ltomichav@fcpn.edu.bo', '13579', 'activo', '12636278', 'david.jpeg', 'ltomichav@fcpn.edu.bo', '63559081', '2023-05-02', NULL);
 
 --
 -- Índices para tablas volcadas
@@ -469,7 +511,7 @@ ALTER TABLE `ambiente`
 --
 ALTER TABLE `asistencia`
   ADD PRIMARY KEY (`id_asistencia`),
-  ADD UNIQUE KEY `id_evento` (`id_evento`);
+  ADD KEY `id_evento` (`id_evento`) USING BTREE;
 
 --
 -- Indices de la tabla `casual`
@@ -582,13 +624,13 @@ ALTER TABLE `administrador`
 -- AUTO_INCREMENT de la tabla `ambiente`
 --
 ALTER TABLE `ambiente`
-  MODIFY `id_ambiente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_ambiente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `asistencia`
 --
 ALTER TABLE `asistencia`
-  MODIFY `id_asistencia` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_asistencia` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de la tabla `casual`
@@ -618,7 +660,7 @@ ALTER TABLE `control`
 -- AUTO_INCREMENT de la tabla `equipamiento`
 --
 ALTER TABLE `equipamiento`
-  MODIFY `id_equipamiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_equipamiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `evento`
@@ -642,7 +684,7 @@ ALTER TABLE `infraestructura`
 -- AUTO_INCREMENT de la tabla `participante`
 --
 ALTER TABLE `participante`
-  MODIFY `id_participante` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_participante` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_evento`
@@ -723,6 +765,19 @@ ALTER TABLE `participante`
 --
 ALTER TABLE `tipo_evento`
   ADD CONSTRAINT `tipo_evento_ibfk_1` FOREIGN KEY (`id_administrador`) REFERENCES `administrador` (`id_administrador`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+DELIMITER $$
+--
+-- Eventos
+--
+CREATE DEFINER=`root`@`localhost` EVENT `editestadoEvento` ON SCHEDULE EVERY 1 MINUTE STARTS '2023-05-09 19:15:53' ENDS '2023-05-31 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE evento
+    SET estado = CASE 
+        WHEN fechaEvento + INTERVAL Duracion DAY < NOW() THEN 'Completado'
+        WHEN fechaEvento <= NOW() AND fechaEvento + INTERVAL Duracion HOUR >= NOW() THEN 'Cursando'
+        ELSE 'Futuro'
+    END$$
+
+DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

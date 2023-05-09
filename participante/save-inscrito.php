@@ -60,7 +60,7 @@ if($resultado){
     imagettftext($imagen, 30, 0, 75, 600, $color_texto,$font,$nombre1);
     $evento = wordwrap($evento, 25, "\n");
     imagettftext($imagen,20, 0, 70, 680, $color_texto,$fo,$evento);
-    imagettftext($imagen, 30, 0, 100, 940, $color_texto,$font,$identidad);
+    imagettftext($imagen, 30, 0, 100, 940, $color_texto,$font,$identidad);;
     // Guardamos la imagen en un archivo
     imagejpeg($imagen, '../build/img/participante/credencial/'.$nombre.'.jpg');
     imagejpeg($imagen2, '../build/img/participante/credencial/'.$nombre.'2.jpg');

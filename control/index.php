@@ -44,7 +44,7 @@
 <?php require 'includes/header.php' ?>
 <div class="contenedor">
     <br>
-    <?php $sql="select *from asistencia";
+    <?php $sql="select *from asistencia where  fecha='".date('Y-m-d')."'";
         $resultado=mysqli_query($conectar, $sql);  
         ?>
     <video width="50%" id="MyCamaraOpen"></video>

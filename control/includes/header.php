@@ -57,7 +57,7 @@ if($varsesion==null || $varsesion=''){//si varsesion esta nulo o vacio no puede 
             <a href="reserva.php">Reserva</a>
             <a href="participante.php">Participante</a>
             <a href="asistencia.php">Asistencia</a>
-                <a href="#">Certificado</a>
+                <a href="certificado.php">Certificado</a>
         </nav>
     </aside>
     <div class="principal">
