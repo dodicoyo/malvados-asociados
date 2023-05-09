@@ -26,6 +26,7 @@ if($varsesion==null || $varsesion=''){//si varsesion esta nulo o vacio no puede 
     <link rel="stylesheet" href="../build/css/app.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
     <link rel="icon" href="../build/img/control/logo.avif">
     
 
@@ -55,6 +56,7 @@ if($varsesion==null || $varsesion=''){//si varsesion esta nulo o vacio no puede 
             <a href="ambiente.php">Ambiente</a>
             <a href="reserva.php">Reserva</a>
             <a href="participante.php">Participante</a>
+            <a href="asistencia.php">Asistencia</a>
                 <a href="#">Certificado</a>
         </nav>
     </aside>

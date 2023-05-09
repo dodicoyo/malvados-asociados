@@ -42,7 +42,10 @@
                 <input type="hidden" name="id_evento" value="<?php echo $fila['id_evento']; ?>">
                 <input type="hidden" name="id_usuario" value="<?php echo $f['id_usuario']; ?>">
                 <input type="hidden" name="correo" value="<?php echo $f['email']; ?>">
-                <input type="hidden" name="nombre" value="<?php echo $f['nombre']; ?>">
+                <input type="hidden" name="nombre" value="<?php echo $f['nombre']." ".$f['apPaterno']." ".$f['apMaterno']; ?>">
+                <input type="hidden" name="nombreEvento" value="<?php echo $fe['nombreEvento']; ?>">
+                <input type="hidden" name="identidad" value="<?php echo $f['identidad']; ?>">
+                <input type="hidden" name="foto" value="<?php echo $f['foto']; ?>">
                 <button type="submit" name="boton1"><i class="bi bi-check-circle-fill"></i></button>
                 <button type="submit" name="boton2"><i class="bi bi-x-circle-fill"></i></button>
               </form>
