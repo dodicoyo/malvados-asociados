@@ -47,17 +47,32 @@ if (isset($_POST['boton1'])) {
         $fo='../build/font/OpenSans-Regular.ttf';// archivo de fuente TrueType personalizado
         $qr = imagecreatefrompng($dir.basename($filename));// Cargar la imagen del código QR        
         imagecopymerge($imagen2, $qr, 125, 350, 0, 0, imagesx($qr), imagesy($qr), 100);// Copiar la imagen del código QR a la imagen de la credencial
-        $usuario_imagen = imagecreatefromjpeg('../build/img/participante/'.$foto.'');
+        $sw=0;
+        $tipo=exif_imagetype('../build/img/participante/'.$foto.'');
+        if ($tipo == IMAGETYPE_JPEG) {
+          $usuario_imagen = imagecreatefromjpeg('../build/img/participante/'.$foto.'');// La imagen es JPEG
+        } elseif ($tipo == IMAGETYPE_PNG) {
+          $usuario_imagen = imagecreatefrompng('../build/img/participante/'.$foto.'');// La imagen es PNG
+            $sw=1;
+          
+        } else {
+          $usuario_imagen = imagecreatefromjpeg('build/img/participante/usuario.jpg');//Otro tipo de imagen
+        }
         $usuario_imagen_redimensionada = imagescale($usuario_imagen, 250);
         imagecopymerge($imagen, $usuario_imagen_redimensionada, 160, 180, 0, 0, imagesx($usuario_imagen_redimensionada), imagesy($usuario_imagen_redimensionada), 100);
         $nombre1 = wordwrap($nombre, 20, "\n");
         imagettftext($imagen, 30, 0, 75, 600, $color_texto,$font,$nombre1);
         $evento = wordwrap($evento, 25, "\n");
-        imagettftext($imagen,20, 0, 70, 680, $color_texto,$fo,$evento);
+        imagettftext($imagen,20, 0, 70, 685, $color_texto,$fo,$evento);
         imagettftext($imagen, 30, 0, 100, 940, $color_texto,$font,$identidad);
         // Guardamos la imagen en un archivo
-        imagejpeg($imagen, '../build/img/participante/credencial/'.$nombre.'.jpg');
-        imagejpeg($imagen2, '../build/img/participante/credencial/'.$nombre.'2.jpg');
+        if($sw==0)
+        {imagejpeg($imagen, '../build/img/participante/credencial/'.$nombre.'.jpg');
+          imagejpeg($imagen2, '../build/img/participante/credencial/'.$nombre.'2.jpg');}
+        else{
+          imagepng($imagen, '../build/img/participante/credencial/'.$nombre.'.jpg');
+          imagepng($imagen2, '../build/img/participante/credencial/'.$nombre.'2.jpg');}
+      
 //parte para enviar mensaje de confirmacio
         try{
             $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
@@ -76,8 +91,9 @@ if (isset($_POST['boton1'])) {
         
 
             $mail->isHTML(true);
-            $mail->Subject='Aprobado de pago aceptada';
-            $mail->Body    = 'Su comprobante de pago ha sido aceptado y su reserva ha sido completada.</b>';
+            $mail->Subject='Aprobado de pago aceptada '.$evento.'';
+            $mail->Body    = 'Su comprobante de pago ha sido aceptado y su reserva ha sido completada.</b>
+            '.$evento.'';
             $mail->addAttachment('../build/img/participante/credencial/'.$nombre.'.jpg', 'Credencial de Identificación');
             $mail->addAttachment('../build/img/participante/credencial/'.$nombre.'2.jpg', 'Credencial de Identificación');
             $mail->send();
