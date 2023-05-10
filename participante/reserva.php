@@ -89,7 +89,7 @@
                 $rp=mysqli_query($conectar,$parti);
                 while($fp=mysqli_fetch_assoc($rp)){
                     $id_evento=$fp['id_evento'];
-                    $sevento="select * from evento where id_evento='".$id_evento."'&& fechaEvento >= CURDATE() ORDER BY fechaEvento ASC";
+                    $sevento="select * from evento where id_evento='".$id_evento."'";
                     $revento=mysqli_query($conectar,$sevento);
                     if($evento=mysqli_fetch_assoc($revento)){
                 ?>
@@ -124,6 +124,11 @@
                                   }
                                 }
                             ?></p>
+                            <div class="button-container">
+                                <?php echo"<a class='btn-solid-reg page-scroll'  href='detalles.php?id_evento=".$id_evento."'>Detalles</a>";?>
+
+                                    
+                                </div>
                         </div> 
                 </div> 
                 <?php

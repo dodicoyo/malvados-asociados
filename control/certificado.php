@@ -11,7 +11,7 @@ $mail = new PHPMailer(true);
 <?php
     if(isset($_POST['enviar'])) {
         $id_evento = $_POST['lista'];
-        $sql="SELECT id_usuario, COUNT(*) AS asistencias, (COUNT(*) / (SELECT Duracion FROM evento WHERE id_evento = '2')) * 100 AS porcentaje FROM asistencia WHERE id_evento = '2' GROUP BY id_usuario;";
+        $sql="SELECT detalle_asistencia ,id_usuario, COUNT(*) AS asistencias, (COUNT(*) / (SELECT Duracion FROM evento WHERE id_evento = '2')) * 100 AS porcentaje FROM asistencia WHERE id_evento = '".$id_evento."' GROUP BY id_usuario;";
         $resultado=mysqli_query($conectar, $sql);
     }
     else{
@@ -71,8 +71,15 @@ $mail = new PHPMailer(true);
                     </tr>
                     <?php
                     //enviar el certificada a cada uno si cumplio la asistencia
-                        if($filas['porcentaje']>= 80){
-                            $save="";//detalle asistencia enviado
+                        if($filas['porcentaje']>= 80 && $fila['emite']!='no' && $filas['detalle_asistencia']!='enviado'){
+                            if($fila['emite']=='asistencia')//detalle asistencia enviado
+                            {$cont_img="";}
+                            else{$cont_img=$fila['emite'];}
+                            $save="UPDATE asistencia SET detalle_asistencia ='enviado' WHERE id_usuario='".$i."'";
+                            $r=mysqli_query($conectar,$save);
+                            $save="UPDATE evento SET destado ='terminado' WHERE id_evento='".$id_evento."'";
+                            $r=mysqli_query($conectar,$save);
+                            
                             //parte para enviar mensaje de confirmacio
                             try{
                                 $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
@@ -95,7 +102,7 @@ $mail = new PHPMailer(true);
                                 $mail->Body    = 'Enviamos su certificado.</b>';
                                 
                                 $mail->send();
-                                echo 'Message has been sent';
+                                //echo 'Message has been sent';
                             }
                             catch (Exception $e) {
                                 echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";

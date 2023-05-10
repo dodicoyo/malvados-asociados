@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-05-2023 a las 01:18:45
+-- Tiempo de generación: 10-05-2023 a las 05:47:07
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -240,22 +240,23 @@ CREATE TABLE `evento` (
   `fechaFin` date DEFAULT NULL,
   `hora_ini` time NOT NULL,
   `hora_fin` time NOT NULL,
-  `estado` varchar(60) NOT NULL
+  `estado` varchar(60) NOT NULL,
+  `emite` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `evento`
 --
 
-INSERT INTO `evento` (`id_evento`, `fechaEvento`, `nombreEvento`, `Duracion`, `descripcion`, `imagen`, `id_ambiente`, `gratuito`, `costo`, `fechaFin`, `hora_ini`, `hora_fin`, `estado`) VALUES
-(1, '2023-04-13', '1 CONGRESO NACIONAL DE COMUNICACION SOCIAL Y TURISMO', 3, 'Primer Congreso Nacional de comunicación social y turismo y no pueden perder esta oportunidad única! ?? Hemos preparado un evento lleno de aprendizaje, diversión y crecimiento personal y profesional.', 'turismo.png', 2, 'no', '200', '2023-05-15', '09:00:00', '18:00:00', ''),
-(2, '2023-05-07', 'XIII CONGRESO NACIONAL DE CIENCIAS ECONOMICAS, CONTABLES, FINANCIERAS Y EMPRESARIALES ', 3, 'Nos complace anunciar el lanzamiento del Congreso Nacional de Ciencias Económicas, Contables, Financieras y Empresariales más grande de Bolivia. 🥳\r\nEste evento imperdible tendrá lugar en la chura Tarija los días 13, 14 y 15 de abril.\r\nNo pierdas la oportunidad de ser parte de esta experiencia única e inolvidable. ', 'eco.png', 1, 'no', '200', '2023-05-15', '09:00:00', '18:00:00', ''),
-(3, '2023-05-07', 'IV CONGRESO NACIONAL DE CIENCIAS DE LA COMPUTACIÓN, INFORMÁTICA, SISTEMA Y TELECOMUNICACIONES', 3, 'Congreso Nacional de Ciencias de la computación-Informática-Sistemas y Telecomunicaciones y no pueden perder esta oportunidad única! 🙌🤓\r\nHemos preparado un evento lleno de aprendizaje, diversión y crecimiento personal y profesional.', 'info.png', 5, 'no', '200', '2023-05-15', '09:00:00', '18:00:00', ''),
-(4, '2023-05-13', 'XL CONGRESO NACIONAL DE INGENIERÍA MECÁNICA, ELECTRÓNICA, INDUSTRIAL Y RAMAS AFINES', 3, 'XL Congreso Nacional de ingeniería mecánica, electrónica, industrial y ramas afines y no pueden perder esta oportunidad única! 🙌🤓\r\nHemos preparado un evento lleno de aprendizaje, diversión y crecimiento personal y profesional.', 'mecanica.png', 6, 'no', '200', '2023-04-15', '09:00:00', '18:00:00', ''),
-(5, '2023-05-13', '3º CONGRESO NACIONAL DE PSICOLOGÍA PEDAGOGÍA Y CIENCIAS DE LA EDUCACIÓN', 3, 'Congreso Nacional de psicología, pedagogía y ciencias de la educación y no pueden perder esta oportunidad única! 🙌🤓\r\nHemos preparado un evento lleno de aprendizaje, diversión y crecimiento personal y profesional.', 'psico.png', 3, 'no', '200', '2023-05-15', '09:00:00', '18:00:00', ''),
-(14, '2023-05-09', 'PRIMERA FERIA \"COSTUMBRES Y TRADICIONES PACEÑAS\"', 1, 'Primera feria \"Costumbres y Tradiciones Paceñas\", en homenaje a los 213 años del primer grito libertario de América', 'costumbre.jpg', 9, 'no', '0', '2023-07-15', '10:00:00', '16:00:00', ''),
-(15, '2023-05-08', 'CONGRESO NACIONAL CRISIS CLIMÁTICA - DEL 3 AL 5 DE MAYO DE 2023', 3, '', 'climatica.jpg', 8, 'si', '0', '2023-05-05', '07:00:00', '12:00:00', ''),
-(16, '2023-10-14', 'FERIA A PUERTAS ABIERTAS (SEGUNDA VERSIÓN)', 1, 'La carrera de Ingeniería Industrial y el Instituto de Investigaciones Industriales de la #UMSA invitan a la población a visitar la:', 'feria.jpg', 7, 'si', '0', '2023-10-14', '09:00:00', '15:00:00', '');
+INSERT INTO `evento` (`id_evento`, `fechaEvento`, `nombreEvento`, `Duracion`, `descripcion`, `imagen`, `id_ambiente`, `gratuito`, `costo`, `fechaFin`, `hora_ini`, `hora_fin`, `estado`, `emite`) VALUES
+(1, '2023-04-13', '1 CONGRESO NACIONAL DE COMUNICACION SOCIAL Y TURISMO', 3, 'Primer Congreso Nacional de comunicación social y turismo y no pueden perder esta oportunidad única! ?? Hemos preparado un evento lleno de aprendizaje, diversión y crecimiento personal y profesional.', 'turismo.png', 2, 'no', '200', '2023-05-15', '09:00:00', '18:00:00', 'p', 'valor curricular 80 horas académicas'),
+(2, '2023-05-07', 'XIII CONGRESO NACIONAL DE CIENCIAS ECONOMICAS, CONTABLES, FINANCIERAS Y EMPRESARIALES ', 3, 'Nos complace anunciar el lanzamiento del Congreso Nacional de Ciencias Económicas, Contables, Financieras y Empresariales más grande de Bolivia. 🥳\r\nEste evento imperdible tendrá lugar en la chura Tarija los días 13, 14 y 15 de abril.\r\nNo pierdas la oportunidad de ser parte de esta experiencia única e inolvidable. ', 'eco.png', 1, 'no', '200', '2023-05-15', '09:00:00', '18:00:00', '', 'valor curricular 80 horas académicas'),
+(3, '2023-05-07', 'IV CONGRESO NACIONAL DE CIENCIAS DE LA COMPUTACIÓN, INFORMÁTICA, SISTEMA Y TELECOMUNICACIONES', 3, 'Congreso Nacional de Ciencias de la computación-Informática-Sistemas y Telecomunicaciones y no pueden perder esta oportunidad única! 🙌🤓\r\nHemos preparado un evento lleno de aprendizaje, diversión y crecimiento personal y profesional.', 'info.png', 5, 'no', '200', '2023-05-15', '09:00:00', '18:00:00', '', ''),
+(4, '2023-05-13', 'XL CONGRESO NACIONAL DE INGENIERÍA MECÁNICA, ELECTRÓNICA, INDUSTRIAL Y RAMAS AFINES', 3, 'XL Congreso Nacional de ingeniería mecánica, electrónica, industrial y ramas afines y no pueden perder esta oportunidad única! 🙌🤓\r\nHemos preparado un evento lleno de aprendizaje, diversión y crecimiento personal y profesional.', 'mecanica.png', 6, 'no', '200', '2023-04-15', '09:00:00', '18:00:00', '', 'valor curricular 80 horas académicas'),
+(5, '2023-05-13', '3º CONGRESO NACIONAL DE PSICOLOGÍA PEDAGOGÍA Y CIENCIAS DE LA EDUCACIÓN', 3, 'Congreso Nacional de psicología, pedagogía y ciencias de la educación y no pueden perder esta oportunidad única! 🙌🤓\r\nHemos preparado un evento lleno de aprendizaje, diversión y crecimiento personal y profesional.', 'psico.png', 3, 'no', '200', '2023-05-15', '09:00:00', '18:00:00', 'p', 'valor curricular 80 horas académicas'),
+(14, '2023-05-09', 'PRIMERA FERIA \"COSTUMBRES Y TRADICIONES PACEÑAS\"', 1, 'Primera feria \"Costumbres y Tradiciones Paceñas\", en homenaje a los 213 años del primer grito libertario de América', 'costumbre.jpg', 9, 'no', '0', '2023-07-15', '10:00:00', '16:00:00', '', 'no'),
+(15, '2023-05-08', 'CONGRESO NACIONAL CRISIS CLIMÁTICA - DEL 3 AL 5 DE MAYO DE 2023', 3, '', 'climatica.jpg', 8, 'si', '0', '2023-05-05', '07:00:00', '12:00:00', '', 'asistencia'),
+(16, '2023-10-14', 'FERIA A PUERTAS ABIERTAS (SEGUNDA VERSIÓN)', 1, 'La carrera de Ingeniería Industrial y el Instituto de Investigaciones Industriales de la #UMSA invitan a la población a visitar la:', 'feria.jpg', 7, 'si', '0', '2023-10-14', '09:00:00', '15:00:00', '', 'no');
 
 -- --------------------------------------------------------
 
@@ -382,7 +383,10 @@ INSERT INTO `participante` (`id_participante`, `id_usuario`, `id_evento`, `fecha
 (15, 21, 14, '2023-05-09', NULL),
 (16, 18, 2, '2023-05-09', NULL),
 (23, 17, 2, '2023-05-09', NULL),
-(24, 16, 2, '2023-05-09', NULL);
+(24, 16, 2, '2023-05-09', NULL),
+(25, 16, 14, '2023-05-10', NULL),
+(26, 16, 14, '2023-05-10', NULL),
+(34, 16, 16, '2023-05-10', NULL);
 
 -- --------------------------------------------------------
 
@@ -684,7 +688,7 @@ ALTER TABLE `infraestructura`
 -- AUTO_INCREMENT de la tabla `participante`
 --
 ALTER TABLE `participante`
-  MODIFY `id_participante` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_participante` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_evento`
@@ -772,9 +776,8 @@ DELIMITER $$
 --
 CREATE DEFINER=`root`@`localhost` EVENT `editestadoEvento` ON SCHEDULE EVERY 1 MINUTE STARTS '2023-05-09 19:15:53' ENDS '2023-05-31 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE evento
     SET estado = CASE 
-        WHEN fechaEvento + INTERVAL Duracion DAY < NOW() THEN 'Completado'
-        WHEN fechaEvento <= NOW() AND fechaEvento + INTERVAL Duracion HOUR >= NOW() THEN 'Cursando'
-        ELSE 'Futuro'
+        WHEN fechaEvento + INTERVAL Duracion DAY < NOW()THEN 'Completado'
+       ELSE 'Futuro'
     END$$
 
 DELIMITER ;

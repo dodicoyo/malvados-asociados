@@ -86,7 +86,7 @@
   <?php
   $ex="select *from horarioevento where id_evento='".$id."'";
   $devuelve=mysqli_query($conectar,$ex);
-  if($row=mysqli_fetch_row($devuelve)>0){
+  
   ?>
 
   
@@ -100,9 +100,12 @@
             <div class="row">
             
                 <div class="col-lg-12">
-                <?php while($row=mysqli_fetch_row($devuelve))
+                <?php 
+                while($fila=mysqli_fetch_assoc($devuelve))
+                
                   {
-                    $devu="select *from expositor where id_expositor='".$row[2]."'";
+                    
+                    $devu="select *from expositor where id_expositor='".$fila['id_expositor']."'";
                     $r=mysqli_query($conectar,$devu);
                     $f=mysqli_fetch_assoc($r);
                     $u=$f["id_usuario"];
@@ -118,7 +121,7 @@
                             <img class="img-fluid" src="../build/img/expositor/<?php echo $f1["foto"];?>" alt="alternative">
                         </div> <!-- end of image-wrapper -->
                           <p class="p-large"><?php echo $f["grado"]." ".$f1["nombre"]." ".$f1["apPaterno"]." ".$f1["apMaterno"] ;?></p>
-                            <p class="job-title"><?php echo $row[3]?></p>
+                            <p class="job-title"><?php echo $fila['charla']?></p>
                           <p class="job-title"><?php echo $f["descripcion"];?></p>
                         <span class="social-icons">
                             <span class="fa-stack">
@@ -144,8 +147,8 @@
             </div> <!-- end of row -->
             
         </div> <!-- end of container -->
-        <?php }
-else?>            
+        <?php 
+?>            
     </div> <!-- end of basic-2 -->
     <!-- end of team -->
 
