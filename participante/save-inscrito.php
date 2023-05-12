@@ -79,41 +79,42 @@ if($resultado){
           imagepng($imagen, '../build/img/participante/credencial/'.$nombre.'.jpg');
           imagepng($imagen2, '../build/img/participante/credencial/'.$nombre.'2.jpg');}
 //parte para enviar mensaje de confirmacio
-    try{
-        $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-        $mail->isSMTP();                                            //Send using SMTP
-        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'malvadosyasociados281@gmail.com';                     //SMTP username
-        $mail->Password   = 'moaemmomvwnjnuew';                               //SMTP password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-        $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-    
-        //Recipients
-        $mail->setFrom('malvadosyasociados281@gmail.com', 'Malvados y Asociados ');
-        $mail->addAddress($correo,$nombre);     //Add a recipient
-        $mail->addCC('jcoyoq@fcpn.edu.bo');
-    
+            try{
+                $mail->SMTPDebug = SMTP::DEBUG_OFF;                      //Enable verbose debug output
+                $mail->isSMTP();                                            //Send using SMTP
+                $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+                $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+                $mail->Username   = 'malvadosyasociados281@gmail.com';                     //SMTP username
+                $mail->Password   = 'moaemmomvwnjnuew';                               //SMTP password
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+                $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+            
+                //Recipients
+                $mail->setFrom('malvadosyasociados281@gmail.com', 'Malvados y Asociados ');
+                $mail->addAddress($correo,$nombre);     //Add a recipient
+                $mail->addCC('jcoyoq@fcpn.edu.bo');
+            
 
-        $mail->isHTML(true);
-        $mail->Subject='Aprobado de pago aceptada';
-        $mail->Body    = 'Su comprobante de pago ha sido aceptado y su reserva ha sido completada.</b>';
-        $mail->addAttachment('../build/img/participante/credencial/'.$nombre.'.jpg', 'Credencial de Identificación');
-        $mail->addAttachment('../build/img/participante/credencial/'.$nombre.'2.jpg', 'Credencial de Identificación');
-        $mail->send();
-       // echo 'Message has been sent';
-    }
-    catch (Exception $e) {
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-    }
+                $mail->isHTML(true);
+                $mail->Subject='Aprobado de pago aceptada';
+                $mail->Body    = 'Su comprobante de pago ha sido aceptado y su reserva ha sido completada.</b>';
+                $mail->addAttachment('../build/img/participante/credencial/'.$nombre.'.jpg', 'Credencial de Identificación');
+                $mail->addAttachment('../build/img/participante/credencial/'.$nombre.'2.jpg', 'Credencial de Identificación');
+                $mail->send();
+            // echo 'Message has been sent';
+            $resultado ="tu inscripcion fue ralizada con exito";
+            }
+            catch (Exception $e) {
+                $resultado="Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            }
 //----------email
             echo  "<script languaje='JavaScript'>
-                        alert('tu inscripcion fue realizada con exito ');
+                        alert('.$resultado. ');
                         location.assign('eventos.php');
                         </script>";
-        }
-        else
-            echo  "<script languaje='JavaScript'>
+}
+else
+    echo  "<script languaje='JavaScript'>
                         alert('ERROR:no se pudo realizar tu inscripcion');
                         location.assign('eventos.php');
                         </script>";
@@ -121,9 +122,6 @@ if($resultado){
 // Liberamos la memoria utilizada por la imagen
 imagedestroy($imagen);
 imagedestroy($qr);
-    }
-    else{
-        echo "no lo capto";
     }
    
 ?> 
