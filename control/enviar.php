@@ -43,9 +43,9 @@
                         // Guardamos la imagen en un archivo
                         
                         if($sw==0)
-                        {   imagejpeg($usuario_imagen, '../build/img/certificados/'.$nombre.'.jpg'); echo"echo '../build/img/certificados/'.$nombre.'.jpg';";}
+                        {  imagejpeg($usuario_imagen, '../build/img/certificados/'.$nombre.'.jpg');}
                         else{
-                            imagepng($usuario_imagen, '../build/img/certificados/'.$nombre.'.jpg');echo"2";}
+                            imagepng($usuario_imagen, '../build/img/certificados/'.$nombre.'.jpg');}
                                      
                     //parte para enviar mensaje de confirmacio
                         try{

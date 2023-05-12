@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-05-2023 a las 09:05:59
+-- Tiempo de generación: 12-05-2023 a las 00:42:06
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -92,14 +92,14 @@ INSERT INTO `asistencia` (`id_asistencia`, `id_evento`, `id_usuario`, `fecha`, `
 (8, 3, 4, '2023-05-07', '07:25:44', 'asistió'),
 (9, 3, 22, '2023-05-07', '07:26:07', 'asistió'),
 (10, 3, 5, '2023-05-07', '07:26:31', 'asistió'),
-(11, 2, 18, '2023-05-06', '21:51:56', 'asistió'),
-(12, 2, 18, '2023-05-07', '21:52:06', 'asistió'),
-(13, 2, 18, '2023-05-08', '21:52:16', 'asistió'),
+(11, 2, 18, '2023-05-06', '21:51:56', 'enviado'),
+(12, 2, 18, '2023-05-07', '21:52:06', 'enviado'),
+(13, 2, 18, '2023-05-08', '21:52:16', 'enviado'),
 (14, 2, 17, '2023-05-06', '21:52:47', 'asistió'),
 (15, 2, 17, '2023-05-08', '21:52:52', 'asistió'),
-(16, 2, 16, '2023-05-06', '21:53:02', 'asistió'),
-(17, 2, 16, '2023-05-07', '21:53:55', 'asistió'),
-(18, 2, 16, '2023-05-08', '21:54:10', 'asistió'),
+(16, 2, 16, '2023-05-06', '21:53:02', 'enviado'),
+(17, 2, 16, '2023-05-07', '21:53:55', 'enviado'),
+(18, 2, 16, '2023-05-08', '21:54:10', 'enviado'),
 (19, 3, 22, '2023-05-08', '22:04:24', 'asistió'),
 (20, 3, 4, '2023-05-09', '22:04:31', 'asistió'),
 (21, 3, 5, '2023-05-08', '22:04:39', 'asistió'),
@@ -116,7 +116,8 @@ INSERT INTO `asistencia` (`id_asistencia`, `id_evento`, `id_usuario`, `fecha`, `
 (32, 15, 21, '2023-05-10', '16:16:17', 'asistió'),
 (33, 15, 19, '2023-05-09', '16:16:17', 'enviado'),
 (34, 15, 19, '2023-05-08', '16:16:17', 'enviado'),
-(35, 3, 22, '2023-05-09', '22:22:31', 'asistió');
+(35, 3, 22, '2023-05-09', '22:22:31', 'asistió'),
+(36, 16, 4, '2023-05-10', '18:41:23', 'asistió');
 
 -- --------------------------------------------------------
 
@@ -251,13 +252,13 @@ CREATE TABLE `evento` (
 
 INSERT INTO `evento` (`id_evento`, `fechaEvento`, `nombreEvento`, `Duracion`, `descripcion`, `imagen`, `id_ambiente`, `gratuito`, `costo`, `fechaFin`, `hora_ini`, `hora_fin`, `estado`, `emite`, `certificado_img`) VALUES
 (1, '2023-04-13', '1 CONGRESO NACIONAL DE COMUNICACION SOCIAL Y TURISMO', 3, 'Primer Congreso Nacional de comunicación social y turismo y no pueden perder esta oportunidad única! ?? Hemos preparado un evento lleno de aprendizaje, diversión y crecimiento personal y profesional.', 'turismo.png', 2, 'no', '200', '2023-05-15', '09:00:00', '18:00:00', 'p', 'valor curricular 80 horas académicas', ''),
-(2, '2023-05-07', 'XIII CONGRESO NACIONAL DE CIENCIAS ECONOMICAS, CONTABLES, FINANCIERAS Y EMPRESARIALES ', 3, 'Nos complace anunciar el lanzamiento del Congreso Nacional de Ciencias Económicas, Contables, Financieras y Empresariales más grande de Bolivia. 🥳\r\nEste evento imperdible tendrá lugar en la chura Tarija los días 13, 14 y 15 de abril.\r\nNo pierdas la oportunidad de ser parte de esta experiencia única e inolvidable. ', 'eco.png', 1, 'no', '200', '2023-05-15', '09:00:00', '18:00:00', 'proceso', 'valor curricular 80 horas académicas', 'evento.jpg'),
-(3, '2023-05-07', 'IV CONGRESO NACIONAL DE CIENCIAS DE LA COMPUTACIÓN, INFORMÁTICA, SISTEMA Y TELECOMUNICACIONES', 3, 'Congreso Nacional de Ciencias de la computación-Informática-Sistemas y Telecomunicaciones y no pueden perder esta oportunidad única! 🙌🤓\r\nHemos preparado un evento lleno de aprendizaje, diversión y crecimiento personal y profesional.', 'info.png', 5, 'no', '200', '2023-05-15', '09:00:00', '18:00:00', '', '', ''),
+(2, '2023-05-07', 'XIII CONGRESO NACIONAL DE CIENCIAS ECONOMICAS, CONTABLES, FINANCIERAS Y EMPRESARIALES ', 3, 'Nos complace anunciar el lanzamiento del Congreso Nacional de Ciencias Económicas, Contables, Financieras y Empresariales más grande de Bolivia. 🥳\r\nEste evento imperdible tendrá lugar en la chura Tarija los días 13, 14 y 15 de abril.\r\nNo pierdas la oportunidad de ser parte de esta experiencia única e inolvidable. ', 'eco.png', 1, 'no', '200', '2023-05-15', '09:00:00', '18:00:00', 'terminado', 'valor curricular 80 horas académicas', 'evento.jpg'),
+(3, '2023-05-07', 'IV CONGRESO NACIONAL DE CIENCIAS DE LA COMPUTACIÓN, INFORMÁTICA, SISTEMA Y TELECOMUNICACIONES', 3, 'Congreso Nacional de Ciencias de la computación-Informática-Sistemas y Telecomunicaciones y no pueden perder esta oportunidad única! 🙌🤓\r\nHemos preparado un evento lleno de aprendizaje, diversión y crecimiento personal y profesional.', 'info.png', 5, 'no', '200', '2023-05-15', '09:00:00', '18:00:00', '', '', 'infor.jpeg'),
 (4, '2023-05-13', 'XL CONGRESO NACIONAL DE INGENIERÍA MECÁNICA, ELECTRÓNICA, INDUSTRIAL Y RAMAS AFINES', 3, 'XL Congreso Nacional de ingeniería mecánica, electrónica, industrial y ramas afines y no pueden perder esta oportunidad única! 🙌🤓\r\nHemos preparado un evento lleno de aprendizaje, diversión y crecimiento personal y profesional.', 'mecanica.png', 6, 'no', '200', '2023-04-15', '09:00:00', '18:00:00', '', 'valor curricular 80 horas académicas', ''),
 (5, '2023-05-13', '3º CONGRESO NACIONAL DE PSICOLOGÍA PEDAGOGÍA Y CIENCIAS DE LA EDUCACIÓN', 3, 'Congreso Nacional de psicología, pedagogía y ciencias de la educación y no pueden perder esta oportunidad única! 🙌🤓\r\nHemos preparado un evento lleno de aprendizaje, diversión y crecimiento personal y profesional.', 'psico.png', 3, 'no', '200', '2023-05-15', '09:00:00', '18:00:00', 'p', 'valor curricular 80 horas académicas', ''),
 (14, '2023-05-09', 'PRIMERA FERIA \"COSTUMBRES Y TRADICIONES PACEÑAS\"', 1, 'Primera feria \"Costumbres y Tradiciones Paceñas\", en homenaje a los 213 años del primer grito libertario de América', 'costumbre.jpg', 9, 'no', '0', '2023-07-15', '10:00:00', '16:00:00', 'terminado', 'no', ''),
 (15, '2023-05-08', 'CONGRESO NACIONAL CRISIS CLIMÁTICA - DEL 3 AL 5 DE MAYO DE 2023', 3, '', 'climatica.jpg', 8, 'si', '0', '2023-05-05', '07:00:00', '12:00:00', '', 'asistencia', ''),
-(16, '2023-10-14', 'FERIA A PUERTAS ABIERTAS (SEGUNDA VERSIÓN)', 1, 'La carrera de Ingeniería Industrial y el Instituto de Investigaciones Industriales de la #UMSA invitan a la población a visitar la:', 'feria.jpg', 7, 'si', '0', '2023-10-14', '09:00:00', '15:00:00', '', 'no', '');
+(16, '2023-05-10', 'FERIA A PUERTAS ABIERTAS (SEGUNDA VERSIÓN)', 1, 'La carrera de Ingeniería Industrial y el Instituto de Investigaciones Industriales de la #UMSA invitan a la población a visitar la:', 'feria.jpg', 7, 'si', '0', '2023-10-14', '09:00:00', '15:00:00', '', 'no', '');
 
 -- --------------------------------------------------------
 
@@ -294,6 +295,41 @@ INSERT INTO `expositor` (`id_expositor`, `id_usuario`, `id_repositorio`, `descri
 (13, 19, NULL, NULL, 'Lic.', ''),
 (14, 20, NULL, NULL, 'M.Sc', ''),
 (15, 21, NULL, NULL, 'M.Sc', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `horarioevento`
+--
+
+CREATE TABLE `horarioevento` (
+  `id_hoarioevento` int(11) NOT NULL,
+  `id_evento` int(11) NOT NULL,
+  `id_expositor` int(11) NOT NULL,
+  `charla` varchar(100) DEFAULT 'asignar',
+  `fecha` date DEFAULT NULL,
+  `hora_ini` time DEFAULT NULL,
+  `hora_fin` time DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `horarioevento`
+--
+
+INSERT INTO `horarioevento` (`id_hoarioevento`, `id_evento`, `id_expositor`, `charla`, `fecha`, `hora_ini`, `hora_fin`) VALUES
+(1, 1, 8, NULL, '2023-04-13', '09:00:00', '10:00:00'),
+(2, 1, 9, 'comuidad sociaal', '2023-04-14', '12:00:00', '14:00:00'),
+(3, 2, 10, 'Análisis de Datos', '2023-04-13', '09:00:00', '11:00:00'),
+(4, 2, 10, 'economia 2', '2023-04-14', '12:00:00', '14:00:00'),
+(5, 2, 12, 'economia 3', '2023-04-15', '09:00:00', '11:00:00'),
+(6, 3, 13, 'IA', '2023-04-13', NULL, NULL),
+(7, 4, 14, 'mecánica', '2023-04-14', '09:00:00', '11:00:00'),
+(8, 5, 11, 'psicologia', '2023-04-15', '09:00:00', '12:00:00'),
+(9, 5, 14, 'pscología 2', '2023-04-14', '09:00:00', '12:00:00'),
+(10, 5, 15, 'psicología 3', '2023-04-13', '14:00:00', '16:00:00'),
+(11, 3, 4, 'Robot Automaticos', '2023-04-13', '14:00:00', '16:00:00'),
+(12, 3, 10, 'Internet de las Cosas', '2023-04-13', '16:00:00', '18:00:00'),
+(13, 3, 7, 'Mineria de Datos', '2023-04-13', '12:00:00', '114:00:00');
 
 -- --------------------------------------------------------
 
@@ -356,6 +392,21 @@ CREATE TABLE `material` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `pagos`
+--
+
+CREATE TABLE `pagos` (
+  `id_pago` int(11) NOT NULL,
+  `id_reserva` int(11) NOT NULL,
+  `id_participante` int(11) NOT NULL,
+  `monto` varchar(20) NOT NULL,
+  `fecha` date NOT NULL,
+  `estado` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `participante`
 --
 
@@ -387,7 +438,8 @@ INSERT INTO `participante` (`id_participante`, `id_usuario`, `id_evento`, `fecha
 (24, 16, 2, '2023-05-09', NULL),
 (25, 16, 14, '2023-05-10', NULL),
 (26, 16, 14, '2023-05-10', NULL),
-(34, 16, 16, '2023-05-10', NULL);
+(34, 16, 16, '2023-05-10', NULL),
+(36, 4, 16, '2023-05-10', NULL);
 
 -- --------------------------------------------------------
 
@@ -401,6 +453,37 @@ CREATE TABLE `repositorio` (
   `row4` varchar(20) NOT NULL,
   `id_material` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `reserva`
+--
+
+CREATE TABLE `reserva` (
+  `id_reserva` int(220) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `id_evento` int(11) NOT NULL,
+  `fecha_reserva` date NOT NULL,
+  `estado_reserva` varchar(45) NOT NULL DEFAULT 'pendiente',
+  `fecha_pago` datetime DEFAULT NULL,
+  `estado_pago` varchar(45) DEFAULT 'pendiente',
+  `carrera` varchar(50) NOT NULL,
+  `facultad` varchar(50) NOT NULL,
+  `comprobante` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `reserva`
+--
+
+INSERT INTO `reserva` (`id_reserva`, `id_usuario`, `id_evento`, `fecha_reserva`, `estado_reserva`, `fecha_pago`, `estado_pago`, `carrera`, `facultad`, `comprobante`) VALUES
+(1, 4, 3, '2023-05-09', 'completado', '2023-05-09 06:44:31', 'pagado', '', '', 'Arial_font_2021-11-28_14-10-13.jpg'),
+(2, 22, 3, '2023-05-09', 'completado', '2023-05-09 06:45:12', 'pagado', '', '', 'base2.jpeg'),
+(3, 5, 3, '2023-05-09', 'completado', '2023-05-09 06:43:59', 'pagado', '', '', 'Arial-Font.jpg'),
+(4, 18, 2, '2023-05-09', 'completado', '2023-05-09 21:08:24', 'pagado', '', '', 'Arial_font_2021-11-28_14-10-13.jpg'),
+(5, 17, 2, '2023-05-09', 'completado', '2023-05-09 21:09:43', 'pagado', '', '', 'Arial_font_2021-11-28_14-10-13.jpg'),
+(6, 16, 2, '2023-05-09', 'completado', '2023-05-09 21:11:05', 'pagado', '', '', 'Arial_font_2021-11-28_14-10-13.jpg');
 
 -- --------------------------------------------------------
 
@@ -476,7 +559,7 @@ INSERT INTO `usuario` (`id_usuario`, `nombre`, `apPaterno`, `apMaterno`, `email`
 (1, 'Juan ', 'Perez', 'Choque', 'juanperez@gmail.com', 'cado1356', '', '6565656', '', 'juanperez@gmail.com', '', '2023-04-02', ''),
 (3, 'Sara', 'Copa', 'Flores', 'sara@gmail.com', '2468', 'activo', '8377943', 'sara.jpg', 'sara@gmail.com', '64104061', '2023-04-02', ''),
 (4, 'Kamil', 'Chavez', 'Mendoza', 'kchavezm@fcpn.edu.bo', '123456', 'activo', '6106548', 'kamil.jpeg', 'kchavezm@fcpn.edu.bo', '68090089', '2023-04-23', ''),
-(5, 'DIEGO JIMMY ', 'CONDORI', 'MONTES', 'dcondorim@fcpn.edu.bo', '13579', 'caducado session', '8844965', 'diego.jpeg', 'dcondorim@fcpn.edu.bo', '67318226', '2023-04-23', ''),
+(5, 'DIEGO JIMMY ', 'CONDORI', 'MONTES', 'dcondorim@fcpn.edu.bo', '13579', 'caducado session', '8844965', 'diego.jpg', 'dcondorim@fcpn.edu.bo', '67318226', '2023-04-23', ''),
 (6, 'Waldo', 'Caballero', 'Toledo', 'toledo@umsa.bo', '123456', 'activo', '6666666', 'toledo.jpg', 'toledo@umsa.bo', '71264934', '2023-04-23', '123456'),
 (8, 'MARCO ANTONIO', 'LAZARTE ', 'HURTADO', 'marcolazarteurtado@gmail.com', '123456', NULL, '1234561', 'marcolazarte.jpg', 'marcolazartehurtado@gmail.com', '1234561', '2023-04-30', '1234561'),
 (9, 'WILLIAM DAVID', ' RIVAS ', 'TAPIA', 'william@gmail.com', NULL, NULL, '1234562', 'williamdavid.png', 'william@gmail.com', '1234562', '2023-04-30', '1234562'),
@@ -569,6 +652,14 @@ ALTER TABLE `expositor`
   ADD KEY `id_usuario` (`id_usuario`);
 
 --
+-- Indices de la tabla `horarioevento`
+--
+ALTER TABLE `horarioevento`
+  ADD PRIMARY KEY (`id_hoarioevento`),
+  ADD KEY `id_evento` (`id_evento`),
+  ADD KEY `id_expositor` (`id_expositor`);
+
+--
 -- Indices de la tabla `infraestructura`
 --
 ALTER TABLE `infraestructura`
@@ -589,6 +680,12 @@ ALTER TABLE `material`
   ADD KEY `id_repostirorio` (`id_repositorio`);
 
 --
+-- Indices de la tabla `pagos`
+--
+ALTER TABLE `pagos`
+  ADD PRIMARY KEY (`id_pago`);
+
+--
 -- Indices de la tabla `participante`
 --
 ALTER TABLE `participante`
@@ -601,6 +698,14 @@ ALTER TABLE `participante`
 --
 ALTER TABLE `repositorio`
   ADD PRIMARY KEY (`id_repositorio`);
+
+--
+-- Indices de la tabla `reserva`
+--
+ALTER TABLE `reserva`
+  ADD PRIMARY KEY (`id_reserva`),
+  ADD KEY `id_evento` (`id_evento`),
+  ADD KEY `id_usuario` (`id_usuario`);
 
 --
 -- Indices de la tabla `tipo_evento`
@@ -635,7 +740,7 @@ ALTER TABLE `ambiente`
 -- AUTO_INCREMENT de la tabla `asistencia`
 --
 ALTER TABLE `asistencia`
-  MODIFY `id_asistencia` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id_asistencia` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de la tabla `casual`
@@ -680,16 +785,34 @@ ALTER TABLE `expositor`
   MODIFY `id_expositor` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
+-- AUTO_INCREMENT de la tabla `horarioevento`
+--
+ALTER TABLE `horarioevento`
+  MODIFY `id_hoarioevento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
 -- AUTO_INCREMENT de la tabla `infraestructura`
 --
 ALTER TABLE `infraestructura`
   MODIFY `id_infraestructura` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT de la tabla `pagos`
+--
+ALTER TABLE `pagos`
+  MODIFY `id_pago` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `participante`
 --
 ALTER TABLE `participante`
-  MODIFY `id_participante` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id_participante` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
+-- AUTO_INCREMENT de la tabla `reserva`
+--
+ALTER TABLE `reserva`
+  MODIFY `id_reserva` int(220) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_evento`
@@ -753,6 +876,13 @@ ALTER TABLE `expositor`
   ADD CONSTRAINT `expositor_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 
 --
+-- Filtros para la tabla `horarioevento`
+--
+ALTER TABLE `horarioevento`
+  ADD CONSTRAINT `horarioevento_ibfk_1` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id_evento`),
+  ADD CONSTRAINT `horarioevento_ibfk_2` FOREIGN KEY (`id_expositor`) REFERENCES `expositor` (`id_expositor`);
+
+--
 -- Filtros para la tabla `material`
 --
 ALTER TABLE `material`
@@ -764,6 +894,13 @@ ALTER TABLE `material`
 ALTER TABLE `participante`
   ADD CONSTRAINT `participante_ibfk_1` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id_evento`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `participante_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
+
+--
+-- Filtros para la tabla `reserva`
+--
+ALTER TABLE `reserva`
+  ADD CONSTRAINT `reserva_ibfk_1` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id_evento`),
+  ADD CONSTRAINT `reserva_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 
 --
 -- Filtros para la tabla `tipo_evento`

@@ -1,4 +1,57 @@
-<?php require 'includes/header.php' ?>
+<?php require 'includes/header.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+require '../vendor/phpmailer/phpmailer/src/Exception.php';
+require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require '../vendor/phpmailer/phpmailer/src/SMTP.php';
+    if(isset($_POST['submit'])){
+        $nombre=$_POST['nombre'];
+        $email=$_POST['email'];
+        $asunto=$_POST['asunto'];
+        $mensaje=$_POST['mensaje'];
+        $error=array();
+        if(empty($nombre)){
+            $error[] = 'El campo nombre es obligatorio';
+        }
+        if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
+            $error[] = 'La direccion de corrreo electronico no es valida';
+        }
+        if(empty($asunto)){
+            $error[] = 'El campo asunto es obligatorio';
+        }
+        if(empty($mensaje)){
+            $error[] = 'El campo mensaje es obligatorio';
+        }
+        if(count($error)==0){
+            $msj = "De: $nombre <a href='mailto:$email'>$email</a><br>";
+            $msj .= "Asunto: $asunto<br><br>";
+            $msj .= "Cuerpo del mensaje:";
+            $msj .='<p> '.$mensaje.'</p>';
+            $msj .="--<p Este mensaje se ha enviado desde un formulario de contacto de Malvados y Asociados.></p>";
+            $mail = new PHPMailer(true);
+            try{
+                $mail->SMTPDebug = SMTP::DEBUG_OFF;                     
+                $mail->isSMTP(); 
+                $mail->Host='smtp.gmail.com';
+                $mail->SMTPAuth =true;
+                $mail->Username = 'malvadosyasociados281@gmail.com';
+                $mail->Password='moaemmomvwnjnuew';
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+                $mail->Port       = 465;  
+                $mail->setFrom('malvadosyasociados281@gmail.com', 'Malvados y Asociados ');
+                $mail->addAddress('dcondorim@fcpn.edu.bo','Contacto Malvados Y Asociados');
+                $mail->isHTML(true);
+                $mail->Subject='Formulario de Contacto';
+                $mail->Body = utf8_decode($msj);
+                $mail->send();
+                $respuesta = 'Correo Enviado';
+            }catch (Exception $e) {
+                $respuesta ='Mensaje ' .$mail->ErrorInfo;
+            }
+        }
+    }
+?>
 <!-- Contact -->
 <div id="contact" class="form-2">
         <div class="container">
@@ -7,7 +60,7 @@
                     <div class="text-container">
                         <div class="section-title">CONTACTOS</div>
                         <h2>Póngase en contacto usando el formulario</h2>
-                        <p>Regístrese o Puede pasar por nuestra oficina y simplemente use el formulario de contacto.</p>
+                        <p>Puede pasar por nuestra oficina o simplemente use el formulario de contacto.</p>
                         <ul class="list-unstyled li-space-lg">
                             <li class="address"><i class="fas fa-map-marker-alt"></i>Plaza San Francisco, CA 94043, La Paz-Bolivia</li>
                             <li><i class="fas fa-phone"></i><a href="tel:003024630820">+591 641 04 061</a></li>
@@ -49,39 +102,53 @@
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
                 <div class="col-lg-6">
-                    
+                    <?php 
+                    if(isset($error)){
+                        if(count($error)>0){
+                    ?>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12">
+                            <div class="alert alert-danger alert-dismissible" role="alerta">
+                                <?php 
+                                    foreach($error as $error)
+                                    {
+                                        echo $error.'<br>';
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                       }
+                    }
+                    ?>
                     <!-- Contact Form -->
-                    <form id="contactForm" data-toggle="validator" data-focus="false">
-                        <div class="form-group">
-                            <input type="text" class="form-control-input" id="cname" required>
-                            <label class="label-control" for="cname">Name</label>
-                            <div class="help-block with-errors"></div>
+                    <form class="from" action="<?php echo htmlentities($_SERVER['PHP_SELF'])?>" method="post" autocomplete="off">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" required autofocus>
                         </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control-input" id="cemail" required>
-                            <label class="label-control" for="cemail">Email</label>
-                            <div class="help-block with-errors"></div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
                         </div>
-                        <div class="form-group">
-                            <textarea class="form-control-textarea" id="cmessage" required></textarea>
-                            <label class="label-control" for="cmessage">Your message</label>
-                            <div class="help-block with-errors"></div>
+                        <div class="mb-3">
+                            <label for="asunto" class="form-label">Asunto</label>
+                            <input type="text" class="form-control" id="asunto" name="asunto" required>
                         </div>
-                        <div class="form-group checkbox">
-                            <input type="checkbox" id="cterms" value="Agreed-to-Terms" required>I agree with Aria's stated <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms-conditions.html">Terms Conditions</a> 
-                            <div class="help-block with-errors"></div>
+                        <div class="mb-3">
+                            <label for="mensaje" class="form-label">Mensaje</label>
+                            <textarea type="text" class="form-control" id="mesaje" name="mensaje" row="3" required></textarea>
                         </div>
-                        <div class="form-group">
-                            <button type="submit" class="form-control-submit-button">SUBMIT MESSAGE</button>
-                        </div>
-                        <div class="form-message">
-                            <div id="cmsgSubmit" class="h3 text-center hidden"></div>
-                        </div>
+                        <button type="submit" name="submit" class="form-control-submit-button">Enviar</button>
                     </form>
                     <!-- end of contact form -->
-
+                    <?php if(isset($respuesta)){ echo $respuesta;}?>
                 </div> <!-- end of col -->
-            </div> <!-- end of row -->
+                
+                
+            </div> 
+            <!-- end of row -->
         </div> <!-- end of container -->
     </div> <!-- end of form-2 -->
     <!-- end of contact -->

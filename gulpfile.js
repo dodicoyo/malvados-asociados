@@ -16,7 +16,7 @@ const sourcemaps=require('gulp-sourcemaps');
 const cache = require('gulp-cache');
 
 const webp = require('gulp-webp');
-const avif = require('gulp-avif');
+//const avif = require('gulp-avif');
 
 //javaScript
 const terser =require('gulp-terser-js');
@@ -70,7 +70,7 @@ function versionAvif( done ) {
     done();
 }
 
-exports.dev=parallel(css,versionWebp,versionAvif,dev, javascript);
+exports.dev=parallel(css,versionWebp,dev, javascript);
 //esto de abajo es un ejemplo 
 //function tarea(done){
 //    console.log('mi tarea');

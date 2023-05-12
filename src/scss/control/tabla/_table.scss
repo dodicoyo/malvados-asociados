@@ -1,5 +1,11 @@
 @use 'base/variables' as v;
 @use 'base/mixins' as m;
+
+.tlis{
+    max-height: 45rem;
+    overflow: scroll;
+}
+
 table{
     border-collapse: collapse;
     background: v.$color6;

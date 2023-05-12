@@ -45,12 +45,9 @@ if($varsesion==null || $varsesion=''){//si varsesion esta nulo o vacio no puede 
             
             </picture>
 -->
-            <img  loading="lazy"  width="50" heigth="80" src="../build/img/control/logo.webp" alt="desdeaqui">
-            
+            <img  loading="lazy"  width="40" heigth="30" src="../build/img/control/logo.webp" alt="desdeaqui">
             <a href="index.php"><h3>  Malvados y Asociados </h3></a>
-         
         </div>
-
         <nav class="sidebar-nav flex">
             <a href="infraestructura.php">Infraestructura Fisica</a>
             <a href="ambiente.php">Ambiente</a>

@@ -7,7 +7,10 @@
         <h2 >Participante</h2>
     </div>
     <br/>
-    <div class="tlis">
+    <div class="tlis" style="
+    max-height: 40rem;
+    overflow: scroll;
+">
             <table  >
                 <thead>
                     <tr>
