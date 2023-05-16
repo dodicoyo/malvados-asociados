@@ -97,7 +97,7 @@ if($resultado){
 
                 $mail->isHTML(true);
                 $mail->Subject='Aprobado de pago aceptada';
-                $mail->Body    = 'Su comprobante de pago ha sido aceptado y su reserva ha sido completada.</b>';
+                $mail->Body    = 'Su inscripcion ha sido realizada con exito.</b>';
                 $mail->addAttachment('../build/img/participante/credencial/'.$nombre.'.jpg', 'Credencial de Identificación');
                 $mail->addAttachment('../build/img/participante/credencial/'.$nombre.'2.jpg', 'Credencial de Identificación');
                 $mail->send();
@@ -109,7 +109,7 @@ if($resultado){
             }
 //----------email
             echo  "<script languaje='JavaScript'>
-                        alert('.$resultado. ');
+                        alert('$resultado');
                         location.assign('eventos.php');
                         </script>";
 }
